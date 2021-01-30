@@ -1,0 +1,36 @@
+body {
+  background-image: linear-gradient(to top left, #8f08e9 0%, #f57388 100%);
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.ptDetails {
+  width: 400px;
+  color: white;
+  margin-top: 100px;
+  background-color: #b9228c;
+  border-radius: 15px;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.form-check input[type='radio'] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.form-check-label {
+  display: inline-block;
+  background-color: #b9228c;
+  padding: 10px 20px;
+  font-family: sans-serif, Arial;
+  font-size: 16px;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
+}
+
+.form-check input[type='radio']:checked + label {
+  background-color: #8f08e9;
+}
