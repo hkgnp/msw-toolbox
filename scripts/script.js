@@ -9,7 +9,7 @@ const slideUp = {
 };
 
 const singlePage = {
-  cleanup: true,
+  reset: true,
   duration: 2000,
   delay: 400,
 };
