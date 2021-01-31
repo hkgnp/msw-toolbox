@@ -20,11 +20,7 @@ ScrollReveal().reveal('.logo', { delay: 500 });
 
 ScrollReveal().reveal('.instructions', { delay: 1500 });
 
-ScrollReveal().reveal('#location', {
-  cleanup: true,
-  duration: 2000,
-  delay: 400,
-});
+ScrollReveal().reveal('#location', singlePage);
 
 ScrollReveal().reveal('#aboutthisapp', singlePage);
 
