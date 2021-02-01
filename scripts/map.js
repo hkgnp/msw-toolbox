@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
   getLocation();
 
   (async () => {
-    let response = await axios.get('../geojson/sso.geojson');
+    let response = await axios.get('scripts/sso.geojson');
     let layer = L.geoJson(response.data, {
       onEachFeature: (feature, layer) => {
         new L.marker([
