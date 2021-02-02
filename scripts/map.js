@@ -49,18 +49,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.querySelector('#findnearest').addEventListener('click', () => {
   closestPt = L.GeometryUtil.closestLayer(map, searchLayer, currPosition);
-  console.log(searchLayer);
-  console.log(map);
-  console.log(currPosition);
-  console.log(closestPt);
-
-  // let myIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [29, 64] });
-  // L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-  //   icon: myIcon,
-  // }).addTo(map);s
 
   let popup = L.popup()
     .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
     .setContent(closestPt.layer.feature.properties.Description)
     .openOn(map);
+
+  // let myIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [29, 64] });
+  // L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
+  //   icon: myIcon,
+  // }).addTo(map);s
 });
