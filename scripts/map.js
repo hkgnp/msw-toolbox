@@ -9,13 +9,13 @@ L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
   minZoom: 11,
 }).addTo(map);
 
-window.addEventListener('DOMContentLoaded', () => {
+let currPosition = [];
+document.querySelector('#whereami').addEventListener('click', () => {
   let getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     }
   };
-  let currPosition = [];
   let showPosition = (position) => {
     new L.Marker([position.coords.latitude, position.coords.longitude], {
       bounceOnAdd: true,
@@ -28,7 +28,8 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   getLocation();
-
+});
+window.addEventListener('DOMContentLoaded', () => {
   (async () => {
     let response = await axios.get('geojson/sso.geojson');
     let layer = L.geoJson(response.data, {
