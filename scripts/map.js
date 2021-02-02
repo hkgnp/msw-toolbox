@@ -9,6 +9,7 @@ L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
   minZoom: 11,
 }).addTo(map);
 
+// Find current position
 let currPosition = [];
 document.querySelector('#whereami').addEventListener('click', () => {
   let getLocation = () => {
@@ -30,6 +31,7 @@ document.querySelector('#whereami').addEventListener('click', () => {
   getLocation();
 });
 
+// Find SSO layer
 let searchLayer = [];
 window.addEventListener('DOMContentLoaded', () => {
   (async () => {
