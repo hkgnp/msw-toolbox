@@ -29,6 +29,7 @@ document.querySelector('#whereami').addEventListener('click', () => {
 
   getLocation();
 });
+
 let searchLayer = [];
 window.addEventListener('DOMContentLoaded', () => {
   (async () => {
@@ -47,6 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
   })();
 });
 
+// Find nearest
 document.querySelector('#findnearest').addEventListener('click', () => {
   closestPt = L.GeometryUtil.closestLayer(map, searchLayer, currPosition);
 
