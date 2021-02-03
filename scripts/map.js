@@ -113,6 +113,21 @@ document.querySelector('#findnearest').addEventListener('click', () => {
 
 // Trying KML
 
+let kmlFile = 'geojson/eldercare.kml';
+
+let elderCarePopup = L.geoJson(null, {
+  pointToLayer: (feature, latlng) => {
+    return L.marker(latlng).bindPopup(feature.properties.name);
+  },
+});
+
+let elderCareLayer = omnivore
+  .kml(kmlFile, null, elderCarePopup)
+  .on('read', () => {
+    map.fitbounds(elderCareLayer.getBounds());
+  })
+  .addTo(map);
+
 // let res = await axios.get('geojson/testkml.kml');
 // console.log(res.data);
 
