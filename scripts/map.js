@@ -17,15 +17,18 @@ L.tileLayer(
   }
 ).addTo(map);
 
+// show the scale bar on the lower left corner
+L.control.scale().addTo(map);
+
 // Find current position
 let currPosition = [];
 document.querySelector('#whereami').addEventListener('click', () => {
   let getLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(whereAmI);
     }
   };
-  let showPosition = (position) => {
+  let whereAmI = (position) => {
     new L.Marker([position.coords.latitude, position.coords.longitude], {
       bounceOnAdd: true,
     }).addTo(map);
@@ -33,6 +36,7 @@ document.querySelector('#whereami').addEventListener('click', () => {
     if (currPosition.length == 0) {
       currPosition.push(position.coords.latitude, position.coords.longitude);
     }
+
     L.popup()
       .setLatLng([position.coords.latitude, position.coords.longitude])
       .setContent('You are here!')
@@ -42,12 +46,9 @@ document.querySelector('#whereami').addEventListener('click', () => {
   getLocation();
 });
 
-// show the scale bar on the lower left corner
-L.control.scale().addTo(map);
-
 // Find Disability layer
 let searchDisabilityLayer = [];
-let disabilityLayer = L.layerGroup();
+let disabilityLayer = L.markerClusterGroup();
 (async () => {
   let response = await axios.get('geojson/disability.geojson');
   layer = L.geoJson(response.data, {
@@ -109,3 +110,18 @@ document.querySelector('#findnearest').addEventListener('click', () => {
   //   icon: myIcon,
   // }).addTo(map);s
 });
+
+// Trying KML
+
+// let res = await axios.get('geojson/testkml.kml');
+// console.log(res.data);
+
+// omnivore
+//   .kml('geojson/testkml.kml')
+//   .bindPopup(feature.properties.description)
+//   .addTo(map);
+
+// (async () => {
+//   let res = await axios.get('geojson/testkml.kml');
+//   omnivore.kml(res.data).addTo(ssoLayer);
+// })();
