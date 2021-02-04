@@ -7,7 +7,9 @@ document.querySelector('#tolocation').addEventListener('click', () => {
 let count = 6;
 const loadingTimer = () => {
   count = count - 1;
-  document.getElementById('timer').innerHTML = `Please wait: ${count}s`;
+  document.getElementById(
+    'timer'
+  ).innerHTML = `Please wait: ${count}s to get your location`;
 };
 
 // Scoll Reveal START
