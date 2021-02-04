@@ -1,15 +1,26 @@
 ///////////// SECTION: ALL FUNCTIONS HERE /////////////
 
-// CALL LAYER FUNCTION with short circuit//
-let callLayer = (responseData, serviceLayer, searchLayer) => {
+// FUNCTION: CALL DISABILITY LAYER //
+let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
   layer = L.geoJson(responseData, {
     onEachFeature: (feature, layer) => {
+      // Disability Layer Popup
+      let disabilityPopup = document.createElement('div');
+      disabilityPopup.innerHTML = feature.properties.description;
+
+      let disabilityPopupName = disabilityPopup.querySelectorAll('td')[23]
+        .innerHTML;
+      let disabilityPopupAddress = disabilityPopup.querySelectorAll('td')[11]
+        .innerHTML;
+      let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]
+        .innerHTML;
+
       new L.marker([
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          feature.properties.description || feature.properties.Description
+          `${disabilityPopupName}<br/>${disabilityPopupAddress} ${disabilityPopupPostalCode}`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -18,7 +29,60 @@ let callLayer = (responseData, serviceLayer, searchLayer) => {
   });
 };
 
-// TOGGLE BUTTON FUNCTION //
+// FUNCTION: CALL SSO LAYER //
+let callLayerSso = (responseData, serviceLayer, searchLayer) => {
+  layer = L.geoJson(responseData, {
+    onEachFeature: (feature, layer) => {
+      // Disability Layer Popup
+      let ssoPopup = document.createElement('div');
+      ssoPopup.innerHTML = feature.properties.Description;
+
+      let ssoPopupName = ssoPopup.querySelectorAll('td')[4].innerHTML;
+      let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
+      let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
+      let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
+
+      new L.marker([
+        feature.geometry.coordinates[1],
+        feature.geometry.coordinates[0],
+      ])
+        .bindPopup(
+          `${ssoPopupName}<br/>${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}`
+        )
+        .addTo(serviceLayer);
+      // layer.bindPopup(feature.properties.Description);
+      searchLayer.push(layer);
+    },
+  });
+};
+
+// FUNCTION: CALL FSC LAYER //
+let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
+  layer = L.geoJson(responseData, {
+    onEachFeature: (feature, layer) => {
+      // Disability Layer Popup
+      let fscPopup = document.createElement('div');
+      fscPopup.innerHTML = feature.properties.Description;
+      console.log(feature.properties.Description);
+      let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
+      let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
+      let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
+
+      new L.marker([
+        feature.geometry.coordinates[1],
+        feature.geometry.coordinates[0],
+      ])
+        .bindPopup(
+          `${fscPopupName}<br/>${fscPopupAddress} Singapore ${fscPopupPostalCode}`
+        )
+        .addTo(serviceLayer);
+      // layer.bindPopup(feature.properties.Description);
+      searchLayer.push(layer);
+    },
+  });
+};
+
+// FUNCTION: TOGGLE BUTTON FUNCTION //
 let toggleButtons = (serviceLayer) => {
   !map.hasLayer(serviceLayer)
     ? map.addLayer(serviceLayer)
@@ -32,7 +96,7 @@ let searchDisabilityLayer = [];
 let disabilityLayer = L.markerClusterGroup();
 (async () => {
   let response = await axios.get('geojson/disability.geojson');
-  callLayer(response.data, disabilityLayer, searchDisabilityLayer);
+  callLayerDisability(response.data, disabilityLayer, searchDisabilityLayer);
 })();
 
 // Create SSO layer
@@ -40,7 +104,7 @@ let searchSsoLayer = [];
 let ssoLayer = L.layerGroup();
 (async () => {
   let response = await axios.get('geojson/sso.geojson');
-  callLayer(response.data, ssoLayer, searchSsoLayer);
+  callLayerSso(response.data, ssoLayer, searchSsoLayer);
 })();
 
 // Create FSC layer
@@ -48,7 +112,7 @@ let searchFscLayer = [];
 let fscLayer = L.markerClusterGroup();
 (async () => {
   let response = await axios.get('geojson/fsc.geojson');
-  callLayer(response.data, fscLayer, searchFscLayer);
+  callLayerFsc(response.data, fscLayer, searchFscLayer);
 })();
 
 // Trying KML
@@ -75,15 +139,21 @@ let fscLayer = L.markerClusterGroup();
 
 // Toggle Disability Button
 document.querySelector('#disability-btn').addEventListener('click', () => {
+  map.closePopup();
+  resetView();
   toggleButtons(disabilityLayer);
 });
 
 // Toggle SSO Button
 document.querySelector('#sso-btn').addEventListener('click', () => {
+  map.closePopup();
+  resetView();
   toggleButtons(ssoLayer);
 });
 
 // Toggle FSC Button
 document.querySelector('#fsc-btn').addEventListener('click', () => {
+  map.closePopup();
+  resetView();
   toggleButtons(fscLayer);
 });

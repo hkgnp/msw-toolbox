@@ -1,6 +1,12 @@
 // Setup Singapore location
-let singapore = [1.35, 103.82]; // #1 Singapore latlng
-let map = L.map('mapid').setView(singapore, 12); // #2 Set the center point
+const singapore = [1.35, 103.82]; // #1 Singapore latlng
+map = L.map('mapid').setView(singapore, 12); // #2 Set the center point
+const resetView = () => {
+  map.flyTo(singapore, 12, map.getZoom(), {
+    animate: true,
+    duration: 2,
+  });
+};
 
 // setup the tile layers
 L.tileLayer(
