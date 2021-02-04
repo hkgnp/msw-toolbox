@@ -25,35 +25,31 @@ let getGpsLocation = () => {
   getLocation();
 };
 
-// Find current position of user
-document.querySelector('#whereami').addEventListener('click', () => {
-  getGpsLocation();
-});
-
-// Use "Postal Code" to find nearest services"
-document.querySelector('#submit-search').addEventListener('click', () => {
-  document.location.href = '#search-results';
-  ///////////// SECTION: USER INPUTS /////////////
-
-  // Services selected
+// Function: Get services selected from radio buttons
+getServices = () => {
   let allLayers = {
     searchSsoLayer: searchSsoLayer,
     searchDisabilityLayer: searchDisabilityLayer,
     searchFscLayer: searchFscLayer,
   };
 
-  let userService;
   let serviceRadios = document.querySelectorAll('.services');
   for (let service of serviceRadios) {
     if (service.checked) {
       userService = allLayers[service.value];
+      return userService;
       break;
     }
   }
+};
 
-  // Postal code
+// Function: Get search results from postal code
+let resultsFromPostalCode = () => {
   let searchPostalCode = [];
   let userPostalCode = document.querySelector('#postalcode');
+  document.location.href = '#search-results';
+  ///////////// SECTION: USER INPUTS /////////////
+  getServices();
   (async () => {
     let response = await axios.get(
       'https://developers.onemap.sg/commonapi/search',
@@ -90,6 +86,25 @@ document.querySelector('#submit-search').addEventListener('click', () => {
       icon: myIcon,
     }).addTo(map);
   })();
+};
+
+// Find current position of user
+document.querySelector('#whereami').addEventListener('click', () => {
+  getGpsLocation();
+});
+
+// Use "Postal Code" to find nearest services"
+document.querySelector('#submit-search').addEventListener('click', () => {
+  if (
+    document.querySelector('#postalcode').value.length < 6 ||
+    !Number.isInteger(parseInt(document.querySelector('#postalcode').value))
+  ) {
+    document.querySelector('#timer').innerHTML =
+      'Please key in a valid postal code';
+    return null;
+  } else {
+    resultsFromPostalCode();
+  }
 });
 
 // Use "Use My Location" to find nearest services
@@ -102,21 +117,7 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
   document.location.href = '#search-results';
   ///////////// SECTION: USER INPUTS /////////////
 
-  // Services selected
-  let allLayers = {
-    searchSsoLayer: searchSsoLayer,
-    searchDisabilityLayer: searchDisabilityLayer,
-    searchFscLayer: searchFscLayer,
-  };
-
-  let userService;
-  let serviceRadios = document.querySelectorAll('.services');
-  for (let service of serviceRadios) {
-    if (service.checked) {
-      userService = allLayers[service.value];
-      break;
-    }
-  }
+  getServices();
 
   closestPt = L.GeometryUtil.closestLayer(map, userService, currPosition);
 
