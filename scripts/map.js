@@ -57,7 +57,9 @@ let disabilityLayer = L.markerClusterGroup();
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
-        .bindPopup(feature.properties.name)
+        .bindPopup(
+          `${feature.properties.name} <button><i class="fas fa-arrow-circle-right"></i></button>`
+        )
         .addTo(disabilityLayer);
       searchDisabilityLayer.push(layer);
     },
@@ -82,7 +84,9 @@ let ssoLayer = L.layerGroup();
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
-        .bindPopup(feature.properties.Description)
+        .bindPopup(
+          `${feature.properties.Description} <button><i class="fas fa-arrow-circle-right"></i></button>`
+        )
         .addTo(ssoLayer);
 
       // layer.bindPopup(feature.properties.Description);
@@ -113,33 +117,20 @@ document.querySelector('#findnearest').addEventListener('click', () => {
 
 // Trying KML
 
-let kmlFile = 'geojson/eldercare.kml';
+// let kmlFile = 'geojson/eldercare.kml';
 
-let elderCarePopup = L.geoJson(null, {
-  pointToLayer: (feature, latlng) => {
-    return L.marker(latlng).bindPopup(feature.properties.name);
-  },
-});
+// let elderCarePopup = L.geoJson(null, {
+//   pointToLayer: (feature, latlng) => {
+//     return L.marker(latlng).bindPopup(feature.properties.name);
+//   },
+// });
 
-let elderCareLayer = omnivore
-  .kml(kmlFile, null, elderCarePopup)
-  .on('read', (centerMarker) => {
-    var cM = map.project(centerMarker.popup._latlng);
-    cM.y -= centerMarker.popup._container.clientHeight / 2;
-    map.setZoom(16, { animate: true });
-    map.panTo(map.unproject(cM), { animate: true });
-  })
-  .addTo(map);
-
-// let res = await axios.get('geojson/testkml.kml');
-// console.log(res.data);
-
-// omnivore
-//   .kml('geojson/testkml.kml')
-//   .bindPopup(feature.properties.description)
+// let elderCareLayer = omnivore
+//   .kml(kmlFile, null, elderCarePopup)
+//   .on('read', (centerMarker) => {
+//     var cM = map.project(centerMarker.popup._latlng);
+//     cM.y -= centerMarker.popup._container.clientHeight / 2;
+//     map.setZoom(16, { animate: true });
+//     map.panTo(map.unproject(cM), { animate: true });
+//   })
 //   .addTo(map);
-
-// (async () => {
-//   let res = await axios.get('geojson/testkml.kml');
-//   omnivore.kml(res.data).addTo(ssoLayer);
-// })();

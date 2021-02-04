@@ -59,8 +59,8 @@
 
   <body>
     <!--Header with logo and menu-->
-    <header class="row">
-      <nav class="col">
+    <header class="row d-flex">
+      <nav class="col d-flex">
         <div id="menuToggle">
           <input type="checkbox" />
           <span></span>
@@ -72,156 +72,155 @@
             <a href="#statistics"><li>Useful Statistics</li></a>
             <a href="#contact"><li>Contact</li></a>
             <li></li>
-            <a href="#login"><li>Log In</li></a>
+            <a href="#login"><li>Log In (Coming Soon)</li></a>
           </ul>
         </div>
       </nav>
-      <div class="col mt-3 d-flex justify-content-end">
-        <h2 class="px-3 pt-3 logo">msw tool.box</h2>
+      <div class="col d-flex justify-content-end">
+        <h2 class="px-3 pt-3">msw tool.box</h2>
       </div>
     </header>
 
     <!--Begin Container-->
-    <container class="container-fluid">
-      <!--Instructions-->
-      <summary id="home" class="instructions px-3">
-        <div class="row">
-          <div class="col p-3">
-            <p>Refer your patients to services. All of them.</p>
-            <h3>At your fingertips.</h3>
-            <p>
-              Counsel the patient. Take down their information. Make the
-              referral. All at the convenience of your patient's home.
-            </p>
-          </div>
-        </div>
-      </summary>
-
-      <!--Services Selection-->
-      <section id="services" class="m-0">
-        <div class="row">
-          <div class="col">
-            <div class="form-check my-4 slide-up">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gridRadios"
-                id="gridRadios1"
-                value="sso"
-                checked
-              />
-              <label class="form-check-label" for="gridRadios1">
-                Social Service Office
-              </label>
-            </div>
-            <div class="form-check my-4 slide-up">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gridRadios"
-                id="gridRadios2"
-                value="fsc"
-              />
-              <label class="form-check-label" for="gridRadios2">
-                Family Service Centre
-              </label>
-            </div>
-            <div class="form-check my-4 slide-up">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gridRadios"
-                id="gridRadios3"
-                value="eldercare"
-              />
-              <label class="form-check-label" for="gridRadios3">
-                Eldercare Services
-              </label>
-            </div>
-            <div class="form-check my-4 slide-up">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gridRadios"
-                id="gridRadios4"
-                value="disability"
-              />
-              <label class="form-check-label" for="gridRadios4">
-                Disability Services
-              </label>
-            </div>
-            <div class="form-check my-4 slide-up">
-              <a href="#location"
-                ><button class="btn rounded-circle">
-                  <i class="fas fa-arrow-down"></i></button
-              ></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--Location-->
-      <section id="location" class="row p-3">
-        <div class="col">
-          <h3>Key in your patient's postal code</h3>
+    <!-- <container class="container-fluid"> -->
+    <!--Instructions-->
+    <summary id="home" class="instructions px-3">
+      <div class="row">
+        <div class="col p-3">
+          <p>Refer your patients to services. All of them.</p>
+          <h3>At your fingertips.</h3>
           <p>
-            We do not store any information. The location data is only meant to
-            deliver search results and is not stored on the server.
+            Counsel the patient. Take down their information. Make the referral.
+            All at the convenience of your patient's home.
           </p>
-          <div class="form-group">
-            <input
-              class="form-control form-control-lg"
-              type="text"
-              placeholder="Enter postal code"
-            />
-            <button id="submit-search" class="btn btn-info mt-3">Submit</button>
-            <p><a href="#top" alt="Back to Top">Back to top</a></p>
-          </div>
         </div>
-      </section>
+      </div>
+    </summary>
 
-      <!--Search Results-->
-      <section id="search-results" class="row p-3">
+    <!--Services Selection-->
+    <section id="services" class="m-0">
+      <div class="row">
         <div class="col">
-          <button id="whereami" class="btn btn-info">Where Am I?</button>
-          <button id="findnearest" class="btn btn-info">Find Nearest</button>
-          <button id="sso-btn" class="btn btn-info">SSO</button>
-          <button id="disability-btn" class="btn btn-info">Disability</button>
-          <div id="mapid"></div>
-        </div>
-      </section>
-
-      <!--About this App-->
-      <section id="aboutthisapp">
-        <div class="row p-3">
-          <div class="col">
-            <h3>About this App</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Similique recusandae excepturi necessitatibus eos, error
-              consequatur quam aliquam repudiandae delectus dolore pariatur.
-              Molestiae debitis repudiandae atque? Soluta nulla nostrum delectus
-              consequatur!
-            </p>
-            <p><a href="#top" alt="Back to Top">Back to top</a></p>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios1"
+              value="sso"
+              checked
+            />
+            <label class="form-check-label" for="gridRadios1">
+              Social Service Office
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios2"
+              value="fsc"
+            />
+            <label class="form-check-label" for="gridRadios2">
+              Family Service Centre
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios3"
+              value="eldercare"
+            />
+            <label class="form-check-label" for="gridRadios3">
+              Eldercare Services
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios4"
+              value="disability"
+            />
+            <label class="form-check-label" for="gridRadios4">
+              Disability Services
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <a href="#location"
+              ><button class="btn rounded-circle">
+                <i class="fas fa-arrow-down"></i></button
+            ></a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!--Footer and Contact-->
-      <footer id="contact">
-        <div class="row p-3">
-          <div class="col">
-            <h3>Contact</h3>
-            <p>
-              If you have any questions, reach me at
-              <code>hkgnp.git@gmail.com</code> or <i class="fab fa-github"></i>
-            </p>
-            <p><a href="#top" alt="Back to Top">Back to top</a></p>
-          </div>
+    <!--Location-->
+    <section id="location" class="row p-3">
+      <div class="col">
+        <h3>Key in your patient's postal code</h3>
+        <p>
+          We do not store any information. The location data is only meant to
+          deliver search results and is not stored on the server.
+        </p>
+        <div class="form-group">
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="Enter postal code"
+          />
+          <button id="submit-search" class="btn btn-info mt-3">Submit</button>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>
-      </footer>
-    </container>
+      </div>
+    </section>
+
+    <!--Search Results-->
+    <section id="search-results" class="row p-3">
+      <div class="col">
+        <button id="whereami" class="btn btn-info">Where Am I?</button>
+        <button id="findnearest" class="btn btn-info">Find Nearest</button>
+        <button id="sso-btn" class="btn btn-info">SSO</button>
+        <button id="disability-btn" class="btn btn-info">Disability</button>
+        <div id="mapid"></div>
+      </div>
+    </section>
+
+    <!--About this App-->
+    <section id="aboutthisapp">
+      <div class="row p-3">
+        <div class="col">
+          <h3>About this App</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
+            recusandae excepturi necessitatibus eos, error consequatur quam
+            aliquam repudiandae delectus dolore pariatur. Molestiae debitis
+            repudiandae atque? Soluta nulla nostrum delectus consequatur!
+          </p>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer and Contact-->
+    <footer id="contact">
+      <div class="row p-3">
+        <div class="col">
+          <h3>Contact</h3>
+          <p>
+            If you have any questions, reach me at
+            <code>hkgnp.git@gmail.com</code> or <i class="fab fa-github"></i>
+          </p>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+        </div>
+      </div>
+    </footer>
+    <!-- </container> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
