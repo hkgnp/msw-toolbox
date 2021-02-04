@@ -103,11 +103,11 @@
         <div class="col">
           <div class="form-check my-4 slide-up">
             <input
-              class="form-check-input"
+              class="form-check-input services"
               type="radio"
               name="gridRadios"
               id="gridRadios1"
-              value="sso"
+              value="searchSsoLayer"
               checked
             />
             <label class="form-check-label" for="gridRadios1">
@@ -116,11 +116,11 @@
           </div>
           <div class="form-check my-4 slide-up">
             <input
-              class="form-check-input"
+              class="form-check-input services"
               type="radio"
               name="gridRadios"
               id="gridRadios2"
-              value="fsc"
+              value="searchFscLayer"
             />
             <label class="form-check-label" for="gridRadios2">
               Family Service Centre
@@ -128,25 +128,13 @@
           </div>
           <div class="form-check my-4 slide-up">
             <input
-              class="form-check-input"
+              class="form-check-input services"
               type="radio"
               name="gridRadios"
               id="gridRadios3"
-              value="eldercare"
+              value="searchDisabilityLayer"
             />
             <label class="form-check-label" for="gridRadios3">
-              Eldercare Services
-            </label>
-          </div>
-          <div class="form-check my-4 slide-up">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="gridRadios"
-              id="gridRadios4"
-              value="disability"
-            />
-            <label class="form-check-label" for="gridRadios4">
               Disability Services
             </label>
           </div>
@@ -163,7 +151,9 @@
     <!--Location-->
     <section id="location" class="row p-3">
       <div class="col">
-        <h3>Key in your patient's postal code</h3>
+        <h3>
+          Key in your patient's postal code or simply use your current location
+        </h3>
         <p>
           We do not store any information. The location data is only meant to
           deliver search results and is not stored on the server.
@@ -173,8 +163,14 @@
             class="form-control form-control-lg"
             type="text"
             placeholder="Enter postal code"
+            id="postalcode"
           />
-          <button id="submit-search" class="btn btn-info mt-3">Submit</button>
+          <button id="submit-search" class="btn btn-info mt-3">
+            <a href="#search-results" class="text-white">Submit</a>
+          </button>
+          <button id="uselocation" class="btn btn-warning mt-3">
+            <a href="#search-results" class="text-dark">Use My Location</a>
+          </button>
           <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>
       </div>
@@ -254,8 +250,8 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.9.3/src/leaflet.geometryutil.min.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
     <script src="scripts/map-base.js"></script>
-    <script src="scripts/map-functions.js"></script>
     <script src="scripts/map-services.js"></script>
+    <script src="scripts/map-functions.js"></script>
     <script src="scripts/scroll.js"></script>
   </body>
 </html>
