@@ -20,7 +20,8 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${disabilityPopupName}<br/>${disabilityPopupAddress} ${disabilityPopupPostalCode}`
+          `${disabilityPopupName}
+          ${disabilityPopupAddress} ${disabilityPopupPostalCode}`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -47,7 +48,8 @@ let callLayerSso = (responseData, serviceLayer, searchLayer) => {
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${ssoPopupName}<br/>${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}`
+          `${ssoPopupName}
+          ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -63,7 +65,7 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
       // Disability Layer Popup
       let fscPopup = document.createElement('div');
       fscPopup.innerHTML = feature.properties.Description;
-      console.log(feature.properties.Description);
+
       let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
       let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
       let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
@@ -73,7 +75,8 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${fscPopupName}<br/>${fscPopupAddress} Singapore ${fscPopupPostalCode}`
+          `${fscPopupName}
+          ${fscPopupAddress} Singapore ${fscPopupPostalCode}`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
