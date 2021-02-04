@@ -1,0 +1,21 @@
+// Setup Singapore location
+let singapore = [1.35, 103.82]; // #1 Singapore latlng
+let map = L.map('mapid').setView(singapore, 12); // #2 Set the center point
+
+// setup the tile layers
+L.tileLayer(
+  'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+  {
+    attribution:
+      'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken:
+      'pk.eyJ1IjoiaGtnbnAiLCJhIjoiY2trb3ZudHZjMHVpdzJwcnd4anV2djg1byJ9.cIvwy1AsyIKsp72EvT1nHg',
+  }
+).addTo(map);
+
+// show the scale bar on the lower left corner
+L.control.scale().addTo(map);

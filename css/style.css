@@ -32,13 +32,12 @@ h4 {
 #home p {
   color: rgb(255, 255, 255);
 }
-
-.container-fluid h3 {
-  color: rgb(245, 167, 167);
-}
-
 #services {
   height: 100vh;
+}
+
+#location h3 {
+  color: rgb(245, 167, 167);
 }
 
 .form-check input[type='radio'] {
@@ -89,6 +88,12 @@ h4 {
 }
 
 #contact {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#search-results {
   height: 100vh;
   display: flex;
   align-items: center;
