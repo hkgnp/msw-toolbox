@@ -123,8 +123,11 @@ let elderCarePopup = L.geoJson(null, {
 
 let elderCareLayer = omnivore
   .kml(kmlFile, null, elderCarePopup)
-  .on('read', () => {
-    map.fitbounds(elderCareLayer.getBounds());
+  .on('read', (centerMarker) => {
+    var cM = map.project(centerMarker.popup._latlng);
+    cM.y -= centerMarker.popup._container.clientHeight / 2;
+    map.setZoom(16, { animate: true });
+    map.panTo(map.unproject(cM), { animate: true });
   })
   .addTo(map);
 
