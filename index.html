@@ -139,10 +139,9 @@
             </label>
           </div>
           <div class="form-check my-4 slide-up">
-            <a href="#location"
-              ><button class="btn rounded-circle">
-                <i class="fas fa-arrow-down"></i></button
-            ></a>
+            <button class="btn rounded-circle" id="tolocation">
+              <i class="fas fa-arrow-down"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -165,12 +164,11 @@
             placeholder="Enter postal code"
             id="postalcode"
           />
-          <button id="submit-search" class="btn btn-info mt-3">
-            <a href="#search-results" class="text-white">Submit</a>
-          </button>
+          <button id="submit-search" class="btn btn-info mt-3">Submit</button>
           <button id="uselocation" class="btn btn-warning mt-3">
-            <a href="#search-results" class="text-dark">Use My Location</a>
+            Use My Location
           </button>
+          <p><span id="timer"></span></p>
           <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>
       </div>
@@ -180,11 +178,12 @@
     <section id="search-results" class="row p-3">
       <div class="col">
         <button id="whereami" class="btn btn-info">Where Am I?</button>
-        <button id="findnearest" class="btn btn-info">Find Nearest</button>
+        <!-- <button id="findnearest" class="btn btn-info">Find Nearest</button> -->
+        <div id="mapid"></div>
+        Toggle:
         <button id="sso-btn" class="btn btn-info">SSO</button>
         <button id="disability-btn" class="btn btn-info">Disability</button>
         <button id="fsc-btn" class="btn btn-info">FSC</button>
-        <div id="mapid"></div>
       </div>
     </section>
 
@@ -249,9 +248,9 @@
     <!-- Own JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.9.3/src/leaflet.geometryutil.min.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
+    <script src="scripts/script.js"></script>
     <script src="scripts/map-base.js"></script>
     <script src="scripts/map-services.js"></script>
-    <script src="scripts/map-functions.js"></script>
-    <script src="scripts/scroll.js"></script>
+    <script src="scripts/map-tools.js"></script>
   </body>
 </html>

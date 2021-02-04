@@ -8,7 +8,9 @@ let callLayer = (responseData, serviceLayer, searchLayer) => {
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
-        .bindPopup(feature.properties.name || feature.properties.Description)
+        .bindPopup(
+          feature.properties.description || feature.properties.Description
+        )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
       searchLayer.push(layer);

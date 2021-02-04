@@ -1,11 +1,12 @@
-// Find current position of user
+///////////// SECTION: ALL FUNCTIONS HERE /////////////
 let currPosition = [];
-document.querySelector('#whereami').addEventListener('click', () => {
+let getGpsLocation = () => {
   let getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(whereAmI);
     }
   };
+
   let whereAmI = (position) => {
     new L.Marker([position.coords.latitude, position.coords.longitude], {
       bounceOnAdd: true,
@@ -17,14 +18,21 @@ document.querySelector('#whereami').addEventListener('click', () => {
 
     L.popup()
       .setLatLng([position.coords.latitude, position.coords.longitude])
-      .setContent('You are here!')
+      .setContent('Your Location')
       .openOn(map);
+    map.setView([position.coords.latitude, position.coords.longitude], 18);
   };
   getLocation();
+};
+
+// Find current position of user
+document.querySelector('#whereami').addEventListener('click', () => {
+  getGpsLocation();
 });
 
 // Use "Postal Code" to find nearest services"
 document.querySelector('#submit-search').addEventListener('click', () => {
+  document.location.href = '#search-results';
   ///////////// SECTION: USER INPUTS /////////////
 
   // Services selected
@@ -71,7 +79,7 @@ document.querySelector('#submit-search').addEventListener('click', () => {
       .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
       .setContent(
         closestPt.layer.feature.properties.Description ||
-          closestPt.layer.feature.properties.name
+          closestPt.layer.feature.properties.description
       )
       .openOn(map);
 
@@ -85,12 +93,39 @@ document.querySelector('#submit-search').addEventListener('click', () => {
 });
 
 // Use "Use My Location" to find nearest services
-document.querySelector('#findnearest').addEventListener('click', () => {
-  closestPt = L.GeometryUtil.closestLayer(map, searchSsoLayer, currPosition);
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+document.querySelector('#uselocation').addEventListener('click', async () => {
+  getGpsLocation();
+  let timer = setInterval(loadingTimer, 1000);
+  await delay(5000);
+  clearInterval(timer);
+  document.location.href = '#search-results';
+  ///////////// SECTION: USER INPUTS /////////////
+
+  // Services selected
+  let allLayers = {
+    searchSsoLayer: searchSsoLayer,
+    searchDisabilityLayer: searchDisabilityLayer,
+    searchFscLayer: searchFscLayer,
+  };
+
+  let userService;
+  let serviceRadios = document.querySelectorAll('.services');
+  for (let service of serviceRadios) {
+    if (service.checked) {
+      userService = allLayers[service.value];
+      break;
+    }
+  }
+
+  closestPt = L.GeometryUtil.closestLayer(map, userService, currPosition);
 
   L.popup()
     .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
-    .setContent(closestPt.layer.feature.properties.Description)
+    .setContent(
+      closestPt.layer.feature.properties.Description ||
+        closestPt.layer.feature.properties.description
+    )
     .openOn(map);
 
   // let myIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [29, 64] });
