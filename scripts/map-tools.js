@@ -38,7 +38,6 @@ getServices = () => {
     if (service.checked) {
       userService = allLayers[service.value];
       return userService;
-      break;
     }
   }
 };
@@ -69,15 +68,85 @@ let resultsFromPostalCode = () => {
       parseFloat(postalCodeResults.LONGITUDE),
     ];
 
-    closestPt = L.GeometryUtil.closestLayer(map, userService, searchPostalCode);
+    // Refined searchSsoLayer Popup
+    if (userService == searchSsoLayer) {
+      closestPt = L.GeometryUtil.closestLayer(
+        map,
+        userService,
+        searchPostalCode
+      );
 
-    L.popup()
-      .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
-      .setContent(
-        closestPt.layer.feature.properties.Description ||
-          closestPt.layer.feature.properties.description
-      )
-      .openOn(map);
+      let ssoPopup = document.createElement('div');
+      ssoPopup.innerHTML = closestPt.layer.feature.properties.Description;
+
+      let ssoPopupName = ssoPopup.querySelectorAll('td')[4].innerHTML;
+      let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
+      let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
+      let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
+
+      L.popup()
+        .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
+        .setContent(
+          `${ssoPopupName}<br/>
+          ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}
+          <br/><button>Refer Patient</button>`
+        )
+        .openOn(map);
+    }
+
+    // Refined searchFscLayer Popup
+    if (userService == searchFscLayer) {
+      closestPt = L.GeometryUtil.closestLayer(
+        map,
+        userService,
+        searchPostalCode
+      );
+
+      let fscPopup = document.createElement('div');
+      fscPopup.innerHTML = closestPt.layer.feature.properties.Description;
+
+      let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
+      let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
+      let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
+
+      L.popup()
+        .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
+        .setContent(
+          `${fscPopupName}<br/>
+          ${fscPopupAddress} Singapore ${fscPopupPostalCode}
+          <br/><button>Refer Patient</button>`
+        )
+        .openOn(map);
+    }
+
+    // Refined searchDisability Layer Popup
+    if (userService == searchDisabilityLayer) {
+      closestPt = L.GeometryUtil.closestLayer(
+        map,
+        userService,
+        searchPostalCode
+      );
+
+      let disabilityPopup = document.createElement('div');
+      disabilityPopup.innerHTML =
+        closestPt.layer.feature.properties.description;
+
+      let disabilityPopupName = disabilityPopup.querySelectorAll('td')[23]
+        .innerHTML;
+      let disabilityPopupAddress = disabilityPopup.querySelectorAll('td')[11]
+        .innerHTML;
+      let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]
+        .innerHTML;
+
+      L.popup()
+        .setLatLng([closestPt.latlng.lat, closestPt.latlng.lng])
+        .setContent(
+          `${disabilityPopupName}</br>
+          ${disabilityPopupAddress} ${disabilityPopupPostalCode}
+          <br/><button>Refer Patient</button>`
+        )
+        .openOn(map);
+    }
 
     map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 18);
 

@@ -120,11 +120,11 @@
               class="form-check-input services"
               type="radio"
               name="gridRadios"
-              id="gridRadios1"
+              id="SSOs"
               value="searchSsoLayer"
               checked
             />
-            <label class="form-check-label" for="gridRadios1">
+            <label class="form-check-label" for="SSOs">
               Social Service Office
             </label>
           </div>
@@ -133,10 +133,10 @@
               class="form-check-input services"
               type="radio"
               name="gridRadios"
-              id="gridRadios2"
+              id="FSCs"
               value="searchFscLayer"
             />
-            <label class="form-check-label" for="gridRadios2">
+            <label class="form-check-label" for="FSCs">
               Family Service Centre
             </label>
           </div>
@@ -145,17 +145,19 @@
               class="form-check-input services"
               type="radio"
               name="gridRadios"
-              id="gridRadios3"
+              id="Disability Services"
               value="searchDisabilityLayer"
             />
-            <label class="form-check-label" for="gridRadios3">
+            <label class="form-check-label" for="Disability Services">
               Disability Services
             </label>
           </div>
           <div class="form-check my-4 slide-up">
-            <button class="btn rounded-circle" id="tolocation">
-              <i class="fas fa-arrow-down"></i>
-            </button>
+            <a href="#location" class="rounded-circle" id="selectedradio">
+              <i
+                class="fas fa-arrow-circle-right display-4 slide-up text-info"
+              ></i>
+            </a>
           </div>
         </div>
       </div>
@@ -256,6 +258,8 @@
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.9.3/src/leaflet.geometryutil.min.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
@@ -263,11 +267,10 @@
     ></script>
 
     <!-- Own JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.9.3/src/leaflet.geometryutil.min.js"></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
-    <script src="scripts/script.js"></script>
+
     <script src="scripts/map-base.js"></script>
     <script src="scripts/map-services.js"></script>
     <script src="scripts/map-tools.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

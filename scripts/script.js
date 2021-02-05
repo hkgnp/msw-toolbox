@@ -1,6 +1,16 @@
-// Set link for navigation to key in postal code
-document.querySelector('#tolocation').addEventListener('click', () => {
-  document.location.href = '#location';
+// Insert placeholder after radio button is selected
+document.querySelector('#selectedradio').addEventListener('click', () => {
+  let userService;
+  let serviceRadios = document.querySelectorAll('.services');
+  for (let service of serviceRadios) {
+    if (service.checked) {
+      userService = service.id;
+    }
+  }
+
+  document.querySelector(
+    '#postalcode'
+  ).placeholder = `Enter postal code to search for nearby ${userService}`;
 });
 
 // Set Timer for Using GPS to Search
