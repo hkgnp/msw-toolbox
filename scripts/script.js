@@ -22,6 +22,11 @@ const loadingTimer = () => {
   ).innerHTML = `Please wait: ${count}s to get your location`;
 };
 
+// Restart search
+document.querySelector('#restart-btn').addEventListener('click', () => {
+  location.href = 'index.html';
+});
+
 // Scoll Reveal START
 const slideUp = {
   distance: '150%',

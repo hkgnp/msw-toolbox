@@ -1,4 +1,14 @@
+///////////// SET ICONS /////////////
+const youAreHereIcon = L.icon({
+  iconUrl: 'youarehere.png',
+  iconAnchor: [33, 68],
+});
+
+const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [33, 68] });
+
 ///////////// SECTION: ALL FUNCTIONS HERE /////////////
+
+// FUNCTION: GET GPS LOCAATION //
 let currPosition = [];
 let getGpsLocation = () => {
   let getLocation = () => {
@@ -10,6 +20,7 @@ let getGpsLocation = () => {
   let whereAmI = (position) => {
     new L.Marker([position.coords.latitude, position.coords.longitude], {
       bounceOnAdd: true,
+      icon: youAreHereIcon,
     }).addTo(map);
 
     if (currPosition.length == 0) {
@@ -25,7 +36,7 @@ let getGpsLocation = () => {
   getLocation();
 };
 
-// Function: Get services selected from radio buttons
+// FUNCTION: GET SELECTED SERVICE FROM SELECTED RADIO BUTTON //
 getServices = () => {
   let allLayers = {
     searchSsoLayer: searchSsoLayer,
@@ -42,12 +53,13 @@ getServices = () => {
   }
 };
 
-// Function: Get search results from postal code
+// FUNCTION: GET SEARCH RESULTS FROM POSTAL CODE //
 let resultsFromPostalCode = () => {
   let searchPostalCode = [];
   let userPostalCode = document.querySelector('#postalcode');
   document.location.href = '#search-results';
-  ///////////// SECTION: USER INPUTS /////////////
+
+  // Get selected "Service" radio button and pass it through OneMap API to get lat, lng
   getServices();
   (async () => {
     let response = await axios.get(
@@ -89,9 +101,15 @@ let resultsFromPostalCode = () => {
         .setContent(
           `${ssoPopupName}<br/>
           ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}
-          <br/><button>Refer Patient</button>`
+          <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
         )
         .openOn(map);
+
+      L.marker([searchPostalCode[0], searchPostalCode[1]], {
+        icon: youAreHereIcon,
+      })
+        .addTo(map)
+        .bindPopup('You are here!', { closeOnClick: false, autoClose: false });
     }
 
     // Refined searchFscLayer Popup
@@ -114,7 +132,7 @@ let resultsFromPostalCode = () => {
         .setContent(
           `${fscPopupName}<br/>
           ${fscPopupAddress} Singapore ${fscPopupPostalCode}
-          <br/><button>Refer Patient</button>`
+          <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
         )
         .openOn(map);
     }
@@ -143,16 +161,16 @@ let resultsFromPostalCode = () => {
         .setContent(
           `${disabilityPopupName}</br>
           ${disabilityPopupAddress} ${disabilityPopupPostalCode}
-          <br/><button>Refer Patient</button>`
+          <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
         )
         .openOn(map);
     }
 
-    map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 18);
+    // Set view of map after pop-up is triggered //
+    map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 15);
 
-    let myIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [33, 68] });
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-      icon: myIcon,
+      icon: pinIcon,
     }).addTo(map);
   })();
 };

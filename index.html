@@ -158,6 +158,9 @@
                 class="fas fa-arrow-circle-right display-4 slide-up text-info"
               ></i>
             </a>
+            <a href="#search-results" class="btn btn-success rounded"
+              >Or jump to the map directly to view all the above services.</a
+            >
           </div>
         </div>
       </div>
@@ -202,9 +205,113 @@
           <button id="sso-btn" class="btn btn-info">SSO</button>
           <button id="disability-btn" class="btn btn-info">Disability</button>
           <button id="fsc-btn" class="btn btn-info">FSC</button>
+          <button id="restart-btn" class="btn btn-danger">
+            Restart Search
+          </button>
         </div>
       </div>
     </section>
+
+    <!--Referral Modal-->
+    <div
+      class="modal fade"
+      id="referralModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="referralModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="referralModal">Referral Form</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--Insert Referral Form-->
+            <form>
+              <!--Referrer Details-->
+              <h6>Referrer Details</h6>
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Your Organisation</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your organisation"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Your Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <!--Patient Details-->
+              <h6>Patient Details</h6>
+              <div class="form-group">
+                <label class="form-label">Patient Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter patient's name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Patient Identifier</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please key in last 4 characters of patient's identity number"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Patient Contact</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please key in patient's contact number"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Social Report</label>
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Please indicate clearly the reasons for referral in your social report."
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Refer</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--About this App-->
     <section id="aboutthisapp">
