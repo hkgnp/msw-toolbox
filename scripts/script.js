@@ -10,7 +10,7 @@ document.querySelector('#selectedradio').addEventListener('click', () => {
 
   document.querySelector(
     '#postalcode'
-  ).placeholder = `Enter postal code to search for nearby ${userService}`;
+  ).placeholder = `Searching for ${userService}`;
 });
 
 // Set Timer for Using GPS to Search

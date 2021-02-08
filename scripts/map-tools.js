@@ -215,9 +215,4 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
         closestPt.layer.feature.properties.description
     )
     .openOn(map);
-
-  // let myIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [29, 64] });
-  // L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-  //   icon: myIcon,
-  // }).addTo(map);s
 });

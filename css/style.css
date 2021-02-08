@@ -22,7 +22,7 @@ h4 {
 }
 
 #home {
-  background-color: rgb(245, 167, 167);
+  background-color: rgb(239, 71, 111);
 }
 
 #home h3 {
@@ -39,7 +39,7 @@ h4 {
 }
 
 #location h3 {
-  color: rgb(245, 167, 167);
+  color: rgb(239, 71, 111);
 }
 
 .form-check input[type='radio'] {
@@ -60,10 +60,24 @@ h4 {
 }
 
 .form-check input[type='radio']:checked + label {
-  background-color: #aee1e1;
-  color: #000;
+  background-color: rgba(17, 138, 178);
+  color: rgba(255, 255, 255);
 }
 
+.btn-info {
+  background-color: rgba(6, 214, 160) !important;
+  color: white;
+}
+
+.fa-arrow-circle-right {
+  color: rgba(6, 214, 160) !important;
+}
+
+#jumptomap {
+  background-color: rgba(255, 255, 255);
+  color: rgba(239, 71, 111);
+  border-radius: 12px;
+}
 /* #services > .row {
   height: 80px;
   margin: 10px;

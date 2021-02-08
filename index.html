@@ -109,8 +109,9 @@
           </p>
           <p>
             <a class="text-light" href="#search-results">
-              Or simply <u>click here</u> to search for community services
-              around you.
+              Or simply
+              <span class="mx-1 px-1" id="jumptomap">click here</span> to search
+              for community services around you.
             </a>
           </p>
         </div>
@@ -160,9 +161,7 @@
           </div>
           <div class="form-check my-4">
             <a href="#location" class="rounded-circle" id="selectedradio">
-              <i
-                class="fas fa-arrow-circle-right display-4 slide-up text-info"
-              ></i>
+              <i class="fas fa-arrow-circle-right display-4 slide-up"></i>
             </a>
           </div>
         </div>
@@ -173,7 +172,8 @@
     <section id="location" class="row p-3">
       <div class="col">
         <h3>
-          Key in your patient's postal code or simply use your current location
+          Key in your patient's <u>postal code</u> or simply use your current
+          location
         </h3>
         <p>
           We do not store any information. The location data is only meant to
@@ -200,7 +200,9 @@
     <!--Search Results-->
     <section id="search-results" class="row p-3">
       <div class="col">
-        <button id="whereami" class="btn btn-info mb-2">Where Am I?</button>
+        <button id="whereami" class="btn btn-info mb-2">
+          <i class="fas fa-location-arrow"></i>
+        </button>
         <button id="restart-btn" class="btn btn-danger mb-2">
           Restart Search
         </button>
