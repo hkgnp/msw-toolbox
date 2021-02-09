@@ -1,10 +1,10 @@
 ///////////// SET ICONS /////////////
 const youAreHereIcon = L.icon({
   iconUrl: 'youarehere.png',
-  iconAnchor: [33, 68],
+  iconAnchor: [12, 36],
 });
 
-const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [33, 68] });
+const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [18, 37] });
 
 ///////////// SECTION: ALL FUNCTIONS HERE /////////////
 
