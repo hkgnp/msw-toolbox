@@ -97,6 +97,18 @@ h4 {
   align-items: center;
 }
 
+#search-results {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#infograph {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 #aboutthisapp {
   height: 100vh;
   display: flex;
@@ -104,12 +116,6 @@ h4 {
 }
 
 #contact {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-#search-results {
   height: 100vh;
   display: flex;
   align-items: center;
