@@ -3,7 +3,7 @@
 // Render Tribunal of Maintenance of Parents Chart
 const optionsTribunal = {
   chart: {
-    type: 'line',
+    type: 'bar',
     height: '100%',
   },
   series: [],
@@ -24,16 +24,8 @@ tribunalResponseChart.render();
 // Render Healthcare Attendances Chart
 const optionsHealthAttendances = {
   chart: {
-    type: 'histogram',
+    type: 'line',
     height: '100%',
-  },
-  plotOptions: {
-    bar: {
-      distributed: true,
-    },
-  },
-  legend: {
-    show: false,
   },
   series: [],
   // the noData property allows us to define what to show
@@ -41,7 +33,9 @@ const optionsHealthAttendances = {
   noData: {
     text: 'Loading...',
   },
-  colors: ['#91091e', '#da723c', '#c39e5c'],
+  markers: {
+    size: 8,
+  },
 };
 
 const healthAttendancesChart = new ApexCharts(
@@ -73,24 +67,41 @@ window.addEventListener('DOMContentLoaded', async () => {
   ]);
 
   // Load healthcare dataset
-  let healthAttendancesResponse = await loadInpatientOutpatientAttendances();
+  // Function to push health attendances to array that will be used in the chart
 
-  let acuteHospitalAdmissions = [];
-  for (let r of healthAttendancesResponse) {
-    if (
-      r.section == 'Acute Hospitals Admissions' &&
-      r.x >= '2007' &&
-      r.x <= '2019'
-    ) {
-      acuteHospitalAdmissions.push(r);
-    }
-  }
+  let healthAttendancesResponse = await loadInpatientOutpatientAttendances();
+  console.log(healthAttendancesResponse);
+
+  //Function to push series to chart
+  let pushHealthAttendances = (section) =>
+    healthAttendancesResponse.filter((r) => r.section == section);
+
+  // Push Acute Hospitals
+  let acuteHospitalAdmissions = pushHealthAttendances(
+    'Acute Hospitals Admissions'
+  );
+
+  // Push Acute Hospitals
+  let psychHospitalAdmissions = pushHealthAttendances(
+    'Psychiatric Hospitals Admissions'
+  );
+
+  // for (let r of healthAttendancesResponse) {
+  //   if (r.section == 'Acute Hospitals Admissions')
+  //     acuteHospitalAdmissions.push(r);
+
+  //   // if (r.section == 'Psychiatric Hospitals Admissions')
+  //   //   psychHospitalAdmissions.push(r);
+  // }
 
   healthAttendancesChart.updateSeries([
     {
       name: 'Acute Hospital Admissions',
       data: acuteHospitalAdmissions,
     },
+    {
+      name: 'Psychiatric Hospital Admissions',
+      data: psychHospitalAdmissions,
+    },
   ]);
-  console.log(acuteHospitalAdmissions);
 });
