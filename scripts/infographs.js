@@ -22,6 +22,33 @@ const tribunalResponseChart = new ApexCharts(
 tribunalResponseChart.render();
 
 // Render Healthcare Attendances Chart
+const optionsHealthAttendances = {
+  chart: {
+    type: 'histogram',
+    height: '100%',
+  },
+  plotOptions: {
+    bar: {
+      distributed: true,
+    },
+  },
+  legend: {
+    show: false,
+  },
+  series: [],
+  // the noData property allows us to define what to show
+  // if there is no data loaded
+  noData: {
+    text: 'Loading...',
+  },
+  colors: ['#91091e', '#da723c', '#c39e5c'],
+};
+
+const healthAttendancesChart = new ApexCharts(
+  document.querySelector('#healthattendances'),
+  optionsHealthAttendances
+);
+healthAttendancesChart.render();
 
 // Render Child and Adult Protection Charts
 
@@ -50,8 +77,20 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   let acuteHospitalAdmissions = [];
   for (let r of healthAttendancesResponse) {
-    if (r.section == 'Acute Hospitals Admissions') {
+    if (
+      r.section == 'Acute Hospitals Admissions' &&
+      r.x >= '2007' &&
+      r.x <= '2019'
+    ) {
       acuteHospitalAdmissions.push(r);
     }
   }
+
+  healthAttendancesChart.updateSeries([
+    {
+      name: 'Acute Hospital Admissions',
+      data: acuteHospitalAdmissions,
+    },
+  ]);
+  console.log(acuteHospitalAdmissions);
 });
