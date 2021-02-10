@@ -4,7 +4,7 @@
 const optionsTribunal = {
   chart: {
     type: 'bar',
-    height: '100%',
+    height: '400px',
   },
   series: [],
   xaxis: {},
@@ -20,16 +20,30 @@ const tribunalResponseChart = new ApexCharts(
   optionsTribunal
 );
 tribunalResponseChart.render();
+// End Tribunal of Maintenance of Parents Chart
 
 // Render Healthcare Attendances Chart
 const optionsHealthAttendances = {
   chart: {
     type: 'line',
-    height: '100%',
+    height: '400px',
   },
   series: [],
   // the noData property allows us to define what to show
   // if there is no data loaded
+  yaxis: [
+    {
+      opposite: true,
+      title: {
+        text: 'Acute Hospital Attendances',
+      },
+    },
+    {
+      title: {
+        text: 'Attendances',
+      },
+    },
+  ],
   noData: {
     text: 'Loading...',
   },
@@ -43,6 +57,7 @@ const healthAttendancesChart = new ApexCharts(
   optionsHealthAttendances
 );
 healthAttendancesChart.render();
+// End Healthcare Attendances Chart
 
 // Render Child and Adult Protection Charts
 
@@ -74,7 +89,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   //Function to push series to chart
   let pushHealthAttendances = (section) =>
-    healthAttendancesResponse.filter((r) => r.section == section);
+    healthAttendancesResponse.filter(
+      (r) => r.section == section && r.x >= 2006
+    );
 
   // Push Acute Hospitals
   let acuteHospitalAdmissions = pushHealthAttendances(
@@ -86,13 +103,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     'Psychiatric Hospitals Admissions'
   );
 
-  // for (let r of healthAttendancesResponse) {
-  //   if (r.section == 'Acute Hospitals Admissions')
-  //     acuteHospitalAdmissions.push(r);
+  let commHospitalAdmissions = pushHealthAttendances(
+    'Community Hospitals Admissions'
+  );
 
-  //   // if (r.section == 'Psychiatric Hospitals Admissions')
-  //   //   psychHospitalAdmissions.push(r);
-  // }
+  let socAttendances = pushHealthAttendances('Specialist Outpatient Clinics');
 
   healthAttendancesChart.updateSeries([
     {
@@ -102,6 +117,14 @@ window.addEventListener('DOMContentLoaded', async () => {
     {
       name: 'Psychiatric Hospital Admissions',
       data: psychHospitalAdmissions,
+    },
+    {
+      name: 'Community Hospital Admissions',
+      data: commHospitalAdmissions,
+    },
+    {
+      name: 'Community Hospital Admissions',
+      data: socAttendances,
     },
   ]);
 });
