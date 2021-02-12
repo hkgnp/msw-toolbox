@@ -85,7 +85,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Function to push health attendances to array that will be used in the chart
 
   let healthAttendancesResponse = await loadInpatientOutpatientAttendances();
-  console.log(healthAttendancesResponse);
 
   //Function to push series to chart
   let pushHealthAttendances = (section) =>

@@ -1,7 +1,7 @@
 ///////////// SET ICONS /////////////
 const youAreHereIcon = L.icon({
   iconUrl: 'youarehere.png',
-  iconAnchor: [12, 36],
+  iconAnchor: [15, 36],
 });
 
 const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [18, 37] });
@@ -21,18 +21,13 @@ let getGpsLocation = () => {
     new L.Marker([position.coords.latitude, position.coords.longitude], {
       bounceOnAdd: true,
       icon: youAreHereIcon,
-    }).addTo(map);
+    })
+      .bindPopup('Your Location')
+      .addTo(map);
 
     if (currPosition.length == 0) {
       currPosition.push(position.coords.latitude, position.coords.longitude);
     }
-
-    // L.popup()
-    //   .setLatLng([position.coords.latitude, position.coords.longitude])
-    //   .setContent('Your Location')
-    //   .openOn(map);
-
-    // map.setView([position.coords.latitude, position.coords.longitude], 18);
   };
   getLocation();
 };
@@ -169,7 +164,11 @@ let resultsFromPostalCode = () => {
     }).addTo(map);
 
     // Set view of map after pop-up is triggered //
-    map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 15);
+    // map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 15);
+    map.fitBounds([
+      [searchPostalCode[0], searchPostalCode[1]],
+      [closestPt.latlng.lat, closestPt.latlng.lng],
+    ]);
   })();
 };
 
@@ -206,7 +205,7 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
 
   getServices();
   closestPt = L.GeometryUtil.closestLayer(map, userService, currPosition);
-  console.log(closestPt);
+
   // Refined searchSsoLayer Popup
   getSsoLayer();
 
@@ -222,6 +221,10 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
   })
     .bindPopup('Your Location')
     .addTo(map);
-
-  map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 13);
+  console.log(currPosition);
+  // map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 13);
+  map.fitBounds([
+    [[currPosition[0], currPosition[1]]],
+    [closestPt.latlng.lat, closestPt.latlng.lng],
+  ]);
 });
