@@ -50,6 +50,7 @@ let loadInpatientOutpatientAttendances = async () => {
       y: r.value,
     });
   }
+  console.log(healthAttendances);
 
   return healthAttendances;
 };

@@ -1,7 +1,7 @@
 ///////////// SET ICONS /////////////
 const youAreHereIcon = L.icon({
   iconUrl: 'youarehere.png',
-  iconAnchor: [15, 36],
+  iconAnchor: [18, 36],
 });
 
 const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [18, 37] });
@@ -23,7 +23,10 @@ let getGpsLocation = () => {
       icon: youAreHereIcon,
     })
       .bindPopup('Your Location')
-      .addTo(map);
+      .addTo(map)
+      .on('click', () => {
+        map.setView([position.coords.latitude, position.coords.longitude], 14);
+      });
 
     if (currPosition.length == 0) {
       currPosition.push(position.coords.latitude, position.coords.longitude);

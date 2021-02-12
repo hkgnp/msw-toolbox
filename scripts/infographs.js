@@ -8,6 +8,33 @@ const optionsTribunal = {
   },
   series: [],
   xaxis: {},
+  yaxis: [
+    {
+      seriesName: 'Applications for Variation',
+      title: {
+        text: 'Applications for Variation',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    {
+      seriesName: 'New Applications for Maintenance',
+      opposite: true,
+      title: {
+        text: 'New Applications for Maintenance',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+  ],
   // the noData property allows us to define what to show
   // if there is no data loaded
   noData: {
@@ -28,19 +55,61 @@ const optionsHealthAttendances = {
     type: 'line',
     height: '400px',
   },
+  title: {
+    text: 'Health Attendances (2006 - 2019)',
+    align: 'left',
+    offsetX: 110,
+  },
   series: [],
-  // the noData property allows us to define what to show
-  // if there is no data loaded
   yaxis: [
     {
-      opposite: true,
+      seriesName: 'Acute Hospital Admissions',
       title: {
-        text: 'Acute Hospital Attendances',
+        text: 'Acute Hospital Admissions',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
       },
     },
     {
+      seriesName: 'Emergency Department Attendances',
       title: {
-        text: 'Attendances',
+        text: 'Emergency Department Attendances',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    {
+      seriesName: 'Polyclinic Attendances',
+      opposite: true,
+      title: {
+        text: 'Polyclinic Attendances',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    {
+      seriesName: 'SOC Attendances',
+      opposite: true,
+      title: {
+        text: 'SOC Attendances',
+      },
+      axisTicks: {
+        show: true,
+      },
+      tooltip: {
+        enabled: true,
       },
     },
   ],
@@ -93,20 +162,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     );
 
   // Push Acute Hospitals
-  let acuteHospitalAdmissions = pushHealthAttendances(
+  const acuteHospitalAdmissions = pushHealthAttendances(
     'Acute Hospitals Admissions'
   );
 
-  // Push Acute Hospitals
-  let psychHospitalAdmissions = pushHealthAttendances(
-    'Psychiatric Hospitals Admissions'
+  const socAttendances = pushHealthAttendances('Specialist Outpatient Clinics');
+
+  const accidentAttendances = pushHealthAttendances(
+    'Accident & Emergency Departments'
   );
 
-  let commHospitalAdmissions = pushHealthAttendances(
-    'Community Hospitals Admissions'
-  );
-
-  let socAttendances = pushHealthAttendances('Specialist Outpatient Clinics');
+  const polyclinicAttendnaces = pushHealthAttendances('Polyclinics');
 
   healthAttendancesChart.updateSeries([
     {
@@ -114,16 +180,18 @@ window.addEventListener('DOMContentLoaded', async () => {
       data: acuteHospitalAdmissions,
     },
     {
-      name: 'Psychiatric Hospital Admissions',
-      data: psychHospitalAdmissions,
+      name: 'Emergency Department Attendances',
+      data: accidentAttendances,
     },
     {
-      name: 'Community Hospital Admissions',
-      data: commHospitalAdmissions,
+      name: 'Polyclinic Attendances',
+      data: polyclinicAttendnaces,
+      type: 'bar',
     },
     {
-      name: 'Community Hospital Admissions',
+      name: 'SOC Attendances',
       data: socAttendances,
+      type: 'bar',
     },
   ]);
 });
