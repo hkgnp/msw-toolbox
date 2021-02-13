@@ -35,8 +35,6 @@ const optionsTribunal = {
       },
     },
   ],
-  // the noData property allows us to define what to show
-  // if there is no data loaded
   noData: {
     text: 'Loading...',
   },
@@ -129,7 +127,22 @@ healthAttendancesChart.render();
 // End Healthcare Attendances Chart
 
 // Render Child and Adult Protection Charts
+const optionsApsCpsChart = {
+  chart: {
+    type: 'bar',
+    height: '400px',
+  },
+  series: [],
+  noData: {
+    text: 'Loading...',
+  },
+};
 
+let apsCpsChart = new ApexCharts(
+  document.querySelector('#apscps'),
+  optionsApsCpsChart
+);
+apsCpsChart.render();
 // End Child and Adult Protection Charts
 
 ////////// AXIOS LOADED DATASETS //////////
@@ -200,6 +213,36 @@ window.addEventListener('DOMContentLoaded', async () => {
   ]);
 
   // Load APS and CPS Statistics
-  let apsCpsStats = await apsCpsStats();
-  console.log(apsCpsStats);
+  let apsCpsReponse = await loadApsCpsStats();
+  console.log(apsCpsReponse);
+
+  let apsInvestigations = apsCpsReponse.apsInvestigations.map(
+    (a) => a.vulnerable_adult_investigations_by_msf_aps
+  );
+
+  let cpsEnquiries = apsCpsReponse.cpsEnquiries.map(
+    (a) => a.enquiries_received
+  );
+
+  let cpsYear = apsCpsReponse.cpsEnquiries.map((a) => a.year);
+  let apsYear = apsCpsReponse.apsInvestigations.map((a) => a.year);
+  apsCpsChart.updateOptions({
+    xaxis: {
+      categories: apsYear,
+    },
+  });
+  apsCpsChart.updateSeries([
+    {
+      name: 'Adult Protection Services Investigations',
+      data: apsInvestigations,
+    },
+    {
+      name: 'Child Protection Services Enquiries',
+      data: cpsEnquiries,
+    },
+    {
+      name: 'Child Protection Services Investigations',
+      data: cpsInvestigations,
+    },
+  ]);
 });

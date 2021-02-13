@@ -57,14 +57,13 @@ let loadInpatientOutpatientAttendances = async () => {
 
 ////////// Child and Adult Protection Statistics //////////
 
-let apsCpsStats = async () => {
-  let apsResponse = await axios.get(baseURL, {
+let loadApsCpsStats = async () => {
+  let apsInvestigations = await axios.get(baseURL, {
     params: {
       resource_id: 'f07b21ba-215f-4d56-bb96-749ee496ff3f',
       limit: '300',
     },
   });
-
   let cpsEnquiries = await axios.get(baseURL, {
     params: {
       resource_id: '594b9520-a099-4e41-8c1a-9d1ce23b9e24',
@@ -79,8 +78,6 @@ let apsCpsStats = async () => {
     },
   });
   return {
-    apsResponse: apsResponse,
-    cpsEnquiries: cpsEnquiries,
-    cpsInvestigations: cpsInvestigations,
+    cpsInvestigations: cpsInvestigations.data.result.records,
   };
 };
