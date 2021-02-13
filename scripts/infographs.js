@@ -1,4 +1,4 @@
-////////// Render Charts //////////
+////////// View //////////
 
 // Render Tribunal of Maintenance of Parents Chart
 const optionsTribunal = {
@@ -187,7 +187,7 @@ let apsCpsChart = new ApexCharts(
 apsCpsChart.render();
 // End Child and Adult Protection Charts
 
-////////// AXIOS LOADED DATASETS //////////
+////////// MODEL //////////
 window.addEventListener('DOMContentLoaded', async () => {
   // Load Tribunal Dataset
   let tribunalResponse = await loadTribunalData();
