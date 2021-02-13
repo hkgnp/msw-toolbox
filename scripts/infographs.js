@@ -2,6 +2,9 @@
 
 // Render Tribunal of Maintenance of Parents Chart
 const optionsTribunal = {
+  theme: {
+    palette: 'palette2',
+  },
   chart: {
     type: 'bar',
     height: '400px',
@@ -13,6 +16,9 @@ const optionsTribunal = {
       seriesName: 'Applications for Variation',
       title: {
         text: 'Applications for Variation',
+        style: {
+          color: '#3F51B5',
+        },
       },
       axisTicks: {
         show: true,
@@ -26,6 +32,9 @@ const optionsTribunal = {
       opposite: true,
       title: {
         text: 'New Applications for Maintenance',
+        style: {
+          color: '#03A9F4',
+        },
       },
       axisTicks: {
         show: true,
@@ -49,6 +58,9 @@ tribunalResponseChart.render();
 
 // Render Healthcare Attendances Chart
 let optionsHealthAttendances = {
+  theme: {
+    palette: 'palette3',
+  },
   chart: {
     type: 'line',
     height: '400px',
@@ -64,6 +76,9 @@ let optionsHealthAttendances = {
       seriesName: 'Acute Hospital Admissions',
       title: {
         text: 'Acute Hospital Admissions',
+        style: {
+          color: '#33B2DF',
+        },
       },
       axisTicks: {
         show: true,
@@ -76,6 +91,9 @@ let optionsHealthAttendances = {
       seriesName: 'Emergency Department Attendances',
       title: {
         text: 'Emergency Department Attendances',
+        style: {
+          color: '#546E7A',
+        },
       },
       axisTicks: {
         show: true,
@@ -89,6 +107,9 @@ let optionsHealthAttendances = {
       opposite: true,
       title: {
         text: 'Polyclinic Attendances',
+        style: {
+          color: '#D4526E',
+        },
       },
       axisTicks: {
         show: true,
@@ -102,6 +123,9 @@ let optionsHealthAttendances = {
       opposite: true,
       title: {
         text: 'SOC Attendances',
+        style: {
+          color: '#13D8AA',
+        },
       },
       axisTicks: {
         show: true,
@@ -128,11 +152,29 @@ healthAttendancesChart.render();
 
 // Render Child and Adult Protection Charts
 const optionsApsCpsChart = {
+  stroke: {
+    curve: 'smooth',
+  },
+  theme: {
+    palette: 'palette6',
+  },
   chart: {
-    type: 'bar',
+    type: 'line',
     height: '400px',
   },
   series: [],
+  yaxis: {
+    show: true,
+    title: {
+      text: 'Count',
+    },
+    axisTicks: {
+      show: true,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
   noData: {
     text: 'Loading...',
   },
@@ -165,7 +207,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     },
   ]);
 
-  // Load healthcare dataset
+  // Load healthcare dataset (Already has x and y values)
   // Function to push health attendances to array that will be used in the chart
   let healthAttendancesResponse = await loadInpatientOutpatientAttendances();
 
@@ -195,54 +237,50 @@ window.addEventListener('DOMContentLoaded', async () => {
     {
       name: 'Acute Hospital Admissions',
       data: acuteHospitalAdmissions,
+      type: 'bar',
     },
     {
       name: 'Emergency Department Attendances',
       data: accidentAttendances,
+      type: 'bar',
     },
     {
       name: 'Polyclinic Attendances',
       data: polyclinicAttendnaces,
-      type: 'bar',
     },
     {
       name: 'SOC Attendances',
       data: socAttendances,
-      type: 'bar',
     },
   ]);
 
   // Load APS and CPS Statistics
   let apsCpsReponse = await loadApsCpsStats();
-  console.log(apsCpsReponse);
 
-  let apsInvestigations = apsCpsReponse.apsInvestigations.map(
-    (a) => a.vulnerable_adult_investigations_by_msf_aps
-  );
+  // Function to get CPS Investigations array
+  let pushCpsInvestigations = (abuseType) => {
+    let arr = apsCpsReponse.cpsInvestigations.filter(
+      (r) => r.type_of_abuse == abuseType
+    );
+    return arr.map((i) => ({ x: i.year, y: i.count }));
+  };
 
-  let cpsEnquiries = apsCpsReponse.cpsEnquiries.map(
-    (a) => a.enquiries_received
-  );
+  let physicalAbuse = pushCpsInvestigations('Physical ');
+  let sexualAbuse = pushCpsInvestigations('Sexual ');
+  let neglectAbuse = pushCpsInvestigations('Neglect ');
 
-  let cpsYear = apsCpsReponse.cpsEnquiries.map((a) => a.year);
-  let apsYear = apsCpsReponse.apsInvestigations.map((a) => a.year);
-  apsCpsChart.updateOptions({
-    xaxis: {
-      categories: apsYear,
-    },
-  });
   apsCpsChart.updateSeries([
     {
-      name: 'Adult Protection Services Investigations',
-      data: apsInvestigations,
+      name: 'Physical Abuse',
+      data: physicalAbuse,
     },
     {
-      name: 'Child Protection Services Enquiries',
-      data: cpsEnquiries,
+      name: 'Sexual Abuse',
+      data: sexualAbuse,
     },
     {
-      name: 'Child Protection Services Investigations',
-      data: cpsInvestigations,
+      name: 'Neglect Abuse',
+      data: neglectAbuse,
     },
   ]);
 });
