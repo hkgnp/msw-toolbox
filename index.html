@@ -315,7 +315,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Refer</button>
+            <button type="button" class="btn btn-primary" id="refer-btn">
+              Refer</button
+            ><span id="refer-success" class="text-success"></span>
           </div>
         </div>
       </div>
@@ -403,10 +405,14 @@
         <div class="col">
           <h3>About this App</h3>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
-            recusandae excepturi necessitatibus eos, error consequatur quam
-            aliquam repudiandae delectus dolore pariatur. Molestiae debitis
-            repudiandae atque? Soluta nulla nostrum delectus consequatur!
+            The purpose of this MSW toolbox is to offer a prototype of how a
+            future inter-agency referral system may look like. Currently,
+            referrals start with the referrer spending time to identify and
+            locate the services around the patient, and then emailing the social
+            report to the agency. The above process can be shortened by using a
+            map system to identify the services based on certain filter
+            criteria. From the map system, a referral can then be triggered
+            directly, without needing a separate communication process.
           </p>
           <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>
@@ -457,11 +463,11 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Own JavaScript -->
+    <script src="scripts/script.js"></script>
     <script src="scripts/map-base.js"></script>
     <script src="scripts/map-toggle-buttons.js"></script>
     <script src="scripts/map-tools.js"></script>
     <script src="scripts/data.js"></script>
     <script src="scripts/infographs.js"></script>
-    <script src="scripts/script.js"></script>
   </body>
 </html>

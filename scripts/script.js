@@ -27,6 +27,13 @@ document.querySelector('#restart-btn').addEventListener('click', () => {
   location.href = 'index.html';
 });
 
+// Refer button
+document.querySelector('#refer-btn').addEventListener('click', () => {
+  document.querySelector(
+    '#refer-success'
+  ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
+});
+
 // Scoll Reveal START
 const slideUp = {
   distance: '150%',
