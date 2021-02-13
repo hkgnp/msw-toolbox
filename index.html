@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+      integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+      crossorigin="anonymous"
+    />
+
+    <!--Leaflet CSS-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    />
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="css/menu.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--Scroll Reveal JS-->
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <!--Leaflet Omnivore-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"
+      integrity="sha512-55AYz+N6WyuiC8bRpQftNyCcSBCl3AEutoTsb4EeZuFVFP1+G4gll30iczAvvTpdL9nz48F7ZFEUavRUXp3FNA=="
+      crossorigin="anonymous"
+    ></script>
+    <!--Google Analytics-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RXWHXPZVM2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-RXWHXPZVM2');
+    </script>
+    <title>msw | tool.box</title>
+  </head>
+
+  <body>
+    <!--Header with logo and menu-->
+    <header class="row d-flex">
+      <nav class="col d-flex">
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul id="menu">
+            <a href="#home"><li>Home</li></a>
+            <a href="#aboutthisapp"><li>About this App</li></a>
+            <a href="#infographs"><li>Useful Information</li></a>
+            <a href="#contact"><li>Contact</li></a>
+            <li></li>
+            <a href="#login"><li>Log In (Coming Soon)</li></a>
+          </ul>
+        </div>
+      </nav>
+      <div class="col d-flex justify-content-end">
+        <h2 class="px-4 pt-3">msw tool.box</h2>
+      </div>
+    </header>
+
+    <!--Instructions-->
+    <summary id="home" class="instructions px-3">
+      <div class="row">
+        <div class="col p-3">
+          <p>Refer your patients to services.</p>
+          <h3>At your fingertips.</h3>
+          <p>
+            Select the service. Get the location. Make the referral. All at the
+            convenience of your patient's home.
+          </p>
+          <p>
+            <a class="text-light" href="#search-results"> </a>
+          </p>
+        </div>
+      </div>
+    </summary>
+
+    <!--Services Selection-->
+    <section id="services" class="m-0">
+      <div class="row mt-3 mb-0 px-4 pb-0">
+        <div class="col">
+          Get started by choosing a service below to refer the patient to or
+          <a id="jumptomap" href="#search-results">click here</a> to search for
+          community services around you.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input services"
+              type="radio"
+              name="gridRadios"
+              id="SSOs"
+              value="searchSsoLayer"
+              checked
+            />
+            <label class="form-check-label" for="SSOs">
+              Social Service Office
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input services"
+              type="radio"
+              name="gridRadios"
+              id="FSCs"
+              value="searchFscLayer"
+            />
+            <label class="form-check-label" for="FSCs">
+              Family Service Centre
+            </label>
+          </div>
+          <div class="form-check my-4 slide-up">
+            <input
+              class="form-check-input services"
+              type="radio"
+              name="gridRadios"
+              id="Disability Services"
+              value="searchDisabilityLayer"
+            />
+            <label class="form-check-label" for="Disability Services">
+              Disability Services
+            </label>
+          </div>
+          <div class="form-check my-4">
+            <a href="#location" class="rounded-circle" id="selectedradio">
+              <i class="fas fa-arrow-circle-right display-4 slide-up"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Location-->
+    <section id="location" class="row p-3">
+      <div class="col">
+        <h3>
+          Key in your patient's <u>postal code</u> or simply use your current
+          location
+        </h3>
+        <p>
+          We do not store any information. The location data is only meant to
+          deliver search results and is not stored on the server.
+        </p>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter postal code"
+            id="postalcode"
+            size="7"
+            required
+          />
+          <button id="submit-search" class="btn btn-info mt-3">Submit</button>
+          <button id="uselocation" class="btn btn-warning mt-3">
+            Use My Location
+          </button>
+          <p><span id="timer" class="text-danger"></span></p>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!--Search Results-->
+    <section id="search-results" class="row p-3">
+      <div class="col">
+        <button id="whereami" class="btn btn-info mb-2">
+          <i class="fas fa-location-arrow"></i>
+        </button>
+        <!-- <button class="btn btn-info mb-2">Use Postal Code</button> -->
+        <button id="restart-btn" class="btn btn-danger mb-2">
+          New Referral
+        </button>
+        <!-- <button id="findnearest" class="btn btn-info">Find Nearest</button> -->
+        <div id="mapid"></div>
+        <div class="mt-2">
+          Toggle:
+          <button id="sso-btn" class="btn btn-info">SSO</button>
+          <button id="disability-btn" class="btn btn-info">Disability</button>
+          <button id="fsc-btn" class="btn btn-info">FSC</button>
+        </div>
+      </div>
+    </section>
+
+    <!--Referral Modal-->
+    <div
+      class="modal fade"
+      id="referralModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="referralModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="referralModal">Referral Form</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--Insert Referral Form-->
+            <form>
+              <!--Referrer Details-->
+              <h6>Referrer Details</h6>
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Your Organisation</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your organisation"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Your Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <!--Patient Details-->
+              <h6>Patient Details</h6>
+              <div class="form-group">
+                <label class="form-label">Patient Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter patient's name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Patient Identifier</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please key in last 4 characters of patient's identity number"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Patient Contact</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please key in patient's contact number"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Social Report</label>
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Please indicate clearly the reasons for referral in your social report."
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Refer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Information and Graphs-->
+    <section id="infographs">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Statistics for the Tribunal for the Maintenance of Parents
+              </button>
+            </h5>
+          </div>
+
+          <div
+            id="collapseOne"
+            class="collapse show"
+            aria-labelledby="headingOne"
+            data-parent="#accordion"
+          >
+            <div class="card-body" id="tribunal"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                data-toggle="collapse"
+                data-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Health Attendances
+              </button>
+            </h5>
+          </div>
+          <div
+            id="collapseTwo"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordion"
+          >
+            <div class="card-body" id="healthattendances"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                data-toggle="collapse"
+                data-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Child and Adult Protection Statistics
+              </button>
+            </h5>
+          </div>
+          <div
+            id="collapseThree"
+            class="collapse"
+            aria-labelledby="headingThree"
+            data-parent="#accordion"
+          >
+            <div class="card-body" id="apscps"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--About this App-->
+    <section id="aboutthisapp">
+      <div class="row p-3">
+        <div class="col">
+          <h3>About this App</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
+            recusandae excepturi necessitatibus eos, error consequatur quam
+            aliquam repudiandae delectus dolore pariatur. Molestiae debitis
+            repudiandae atque? Soluta nulla nostrum delectus consequatur!
+          </p>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer and Contact-->
+    <footer id="contact">
+      <div class="row p-3">
+        <div class="col">
+          <h3>Contact</h3>
+          <p>
+            If you have any questions, reach me at
+            <code>hkgnp.git@gmail.com</code> or <i class="fab fa-github"></i>
+          </p>
+          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.9.3/src/leaflet.geometryutil.min.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Own JavaScript -->
+    <script src="scripts/map-base.js"></script>
+    <script src="scripts/map-toggle-buttons.js"></script>
+    <script src="scripts/map-tools.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/infographs.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

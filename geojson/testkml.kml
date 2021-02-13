@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Placemark>
+    <name>Simple placemark</name>
+    <description>Attached to the ground. Intelligently places itself 
+       at the height of the underlying terrain.</description>
+    <Point>
+      <coordinates>1.3187, 103.7064</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Simple placemark two</name>
+    <description>Attached to the ground. Intelligently places itself 
+       at the height of the underlying terrain.</description>
+    <Point>
+      <coordinates>1.4043, 103.7930</coordinates>
+    </Point>
+  </Placemark>
+</kml>
