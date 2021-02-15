@@ -24,7 +24,7 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
           ${disabilityPopupAddress} ${disabilityPopupPostalCode}`
         )
         .addTo(serviceLayer);
-      // layer.bindPopup(feature.properties.Description);
+
       searchLayer.push(layer);
     },
   });
