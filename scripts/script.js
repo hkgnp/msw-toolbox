@@ -22,11 +22,6 @@ const loadingTimer = () => {
   ).innerHTML = `Please wait: ${count}s to get your location`;
 };
 
-// Restart search
-document.querySelector('#restart-btn').addEventListener('click', () => {
-  location.href = 'index.html';
-});
-
 /////////// FUNCTION: localStorage ///////////
 let storeReferrals = (key, value) => {
   window.localStorage.setItem(key, JSON.stringify(value));
@@ -47,7 +42,7 @@ document.querySelector('#refer-btn').addEventListener('click', () => {
     patientName: document.querySelector('#patientName').value,
     patientIdent: document.querySelector('#patientIdent').value,
     patientContact: document.querySelector('#patientContact').value,
-    patientSR: document.querySelector('#patientSR').value,
+    patientSR: document.querySelector('#patientSR').innerHTML,
   });
   // Store referral details in local storage
   storeReferrals(patientReferral, referral);
@@ -56,9 +51,25 @@ document.querySelector('#refer-btn').addEventListener('click', () => {
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
 });
 
+document.querySelector('#close-btn').addEventListener('click', () => {
+  document.querySelector('#refer-success').innerHTML = '';
+});
 document.querySelector('#get-referrals').addEventListener('click', () => {
   retrieveReferrals(patientReferral);
+  document.querySelector('#login').innerHTML = `
+  <h2>Referral History</h2><br>
+  <p>Your Name: ${referral[0].referrerName}</p><br>
+  <p>Your Organisation: ${referral[0].referrerOrg}</p><br>
+  <p>Your Email: ${referral[0].referrerEmail}</p><br>
+  <h3>Patient's Details</h3><br>
+  <p>Name: ${referral[0].patientName}</p><br>
+  <p>Identifier: ${referral[0].patientIdent}</p><br>
+  <p>Contact: ${referral[0].patientContact}</p><br>
+  <p>Social Report: ${referral[0].patientSR}</p><br>
+  
+  `;
 });
+
 // Scoll Reveal START
 const slideUp = {
   distance: '150%',

@@ -206,9 +206,9 @@
           <i class="fas fa-location-arrow"></i>
         </button>
         <!-- <button class="btn btn-info mb-2">Use Postal Code</button> -->
-        <button id="restart-btn" class="btn btn-danger mb-2">
+        <a href="#home" id="restart-btn" class="btn btn-danger mb-2">
           New Referral
-        </button>
+        </a>
         <!-- <button id="findnearest" class="btn btn-info">Find Nearest</button> -->
         <div id="mapid"></div>
         <div class="mt-2">
@@ -319,6 +319,7 @@
               type="button"
               class="btn btn-secondary"
               data-dismiss="modal"
+              id="close-btn"
             >
               Close
             </button>
@@ -329,6 +330,11 @@
         </div>
       </div>
     </div>
+
+    <!--Login-->
+    <section id="login">
+      <button id="get-referrals">Get Referrals</button>
+    </section>
 
     <!--Information and Graphs-->
     <section id="infographs">
@@ -426,10 +432,6 @@
       </div>
     </section>
 
-    <!--Login-->
-    <section id="login">
-      <button id="get-referrals">Get Referrals</button>
-    </section>
     <!--Footer and Contact-->
     <footer id="contact">
       <div class="row p-3">
