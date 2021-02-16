@@ -42,43 +42,44 @@ document.querySelector('#refer-btn').addEventListener('click', () => {
     patientName: document.querySelector('#patientName').value,
     patientIdent: document.querySelector('#patientIdent').value,
     patientContact: document.querySelector('#patientContact').value,
-    patientSR: document.querySelector('#patientSR').innerHTML,
+    patientSR: document.querySelector('#patientSR').value,
   });
   // Store referral details in local storage
   storeReferrals(patientReferral, referral);
   document.querySelector(
     '#refer-success'
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
+  retrieveReferrals(patientReferral);
+  let i;
+  for (i = 0; i < referral.length; i++) {
+    document.querySelector('#referral-summary').innerHTML += `
+      <p>
+      <h2><span class="badge bg-success mr-3 text-light">SUCCESS</span></h2>
+
+      <h4>Referrer's Details</h4>
+
+      <p>Your Name: <u>${referral[i].referrerName}</u></p>
+
+      <p>Your Organisation: <u>${referral[i].referrerOrg}</u></p>
+
+      <p>Your Email: <u>${referral[i].referrerEmail}</u></p>
+
+      <h4>Patient's Details</h4>
+
+      <p>Name: <u>${referral[i].patientName}</u></p>
+
+      <p>Identifier: <u>${referral[i].patientIdent}</u></p>
+
+      <p>Contact: <u>${referral[i].patientContact}</u></p>
+
+      <p>Social Report: <u>${referral[i].patientSR}</u></div>
+      </p>
+      `;
+  }
 });
 
 document.querySelector('#close-btn').addEventListener('click', () => {
   document.querySelector('#refer-success').innerHTML = '';
-});
-document.querySelector('#get-referrals').addEventListener('click', () => {
-  retrieveReferrals(patientReferral);
-  let i;
-  for (i = 0; i < referral.length; i++) {
-    document.querySelector('#login').innerHTML += `
-      <div class="row">
-
-      <p>Your Name: ${referral[i].referrerName}</p><br>
-
-      <p>Your Organisation: ${referral[i].referrerOrg}</p><br>
-
-      <p>Your Email: ${referral[i].referrerEmail}</p><br>
-
-      <h3>Patient's Details</h3><br>
-
-      <p>Name: ${referral[i].patientName}</p><br>
-
-      <p>Identifier: ${referral[i].patientIdent}</p><br>
-
-      <p>Contact: ${referral[i].patientContact}</p><br>
-
-      <p>Social Report: ${referral[i].patientSR}</p><br>
-    <div class="row">
-      `;
-  }
 });
 
 // Scoll Reveal START

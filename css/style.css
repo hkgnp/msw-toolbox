@@ -103,10 +103,8 @@ h4 {
   align-items: center;
 }
 
-#login {
-  height: 100vh;
-  display: flex;
-  align-items: center;
+#referral-summary > p {
+  color: blue;
 }
 
 #infograph {
