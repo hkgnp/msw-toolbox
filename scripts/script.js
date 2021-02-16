@@ -56,18 +56,29 @@ document.querySelector('#close-btn').addEventListener('click', () => {
 });
 document.querySelector('#get-referrals').addEventListener('click', () => {
   retrieveReferrals(patientReferral);
-  document.querySelector('#login').innerHTML = `
-  <h2>Referral History</h2><br>
-  <p>Your Name: ${referral[0].referrerName}</p><br>
-  <p>Your Organisation: ${referral[0].referrerOrg}</p><br>
-  <p>Your Email: ${referral[0].referrerEmail}</p><br>
-  <h3>Patient's Details</h3><br>
-  <p>Name: ${referral[0].patientName}</p><br>
-  <p>Identifier: ${referral[0].patientIdent}</p><br>
-  <p>Contact: ${referral[0].patientContact}</p><br>
-  <p>Social Report: ${referral[0].patientSR}</p><br>
-  
-  `;
+  let i;
+  for (i = 0; i < referral.length; i++) {
+    document.querySelector('#login').innerHTML += `
+      <div class="row">
+
+      <p>Your Name: ${referral[i].referrerName}</p><br>
+
+      <p>Your Organisation: ${referral[i].referrerOrg}</p><br>
+
+      <p>Your Email: ${referral[i].referrerEmail}</p><br>
+
+      <h3>Patient's Details</h3><br>
+
+      <p>Name: ${referral[i].patientName}</p><br>
+
+      <p>Identifier: ${referral[i].patientIdent}</p><br>
+
+      <p>Contact: ${referral[i].patientContact}</p><br>
+
+      <p>Social Report: ${referral[i].patientSR}</p><br>
+    <div class="row">
+      `;
+  }
 });
 
 // Scoll Reveal START
