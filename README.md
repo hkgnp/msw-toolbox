@@ -57,8 +57,7 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 - HTML
 - CSS
 - Vanilla Javascript
-<b>Built with</b>
-- [VS Code](https://code.visualstudio.com/)
+- Built with [VS Code](https://code.visualstudio.com/)
 
 ## API References
 - [OneMap](https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3)
