@@ -62,14 +62,17 @@ const getSsoLayer = () => {
     let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
     let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
     let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
+    let ssoPopupWebsite =
+      'https://www.msf.gov.sg/SSPC/Documents/SocialServiceOffices.pdf';
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
       icon: pinIcon,
     })
       .bindPopup(
-        `${ssoPopupName}<br/>
-      ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}
-      <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
+        `${ssoPopupName}<br>
+      ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}<br>
+      <a href="${ssoPopupWebsite}" target="_blank">Intro to SSOs</a><br>
+      <button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
       )
       .addTo(map)
       .openPopup();
@@ -84,14 +87,16 @@ const getFscLayer = () => {
     let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
     let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
     let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
+    let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
       icon: pinIcon,
     })
       .bindPopup(
-        `${fscPopupName}<br/>
-            ${fscPopupAddress} Singapore ${fscPopupPostalCode}
-            <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
+        `${fscPopupName}<br>
+            ${fscPopupAddress} Singapore ${fscPopupPostalCode}<br>
+            <a href="${fscPopupWebsite}" target="_blank">${fscPopupWebsite}</a><br>
+            <button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
       )
       .addTo(map)
       .openPopup();
@@ -109,14 +114,17 @@ const getDisabilityLayer = () => {
       .innerHTML;
     let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]
       .innerHTML;
+    let disabilityPopupWebsite = disabilityPopup.querySelectorAll('td')[17]
+      .innerHTML;
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
       icon: pinIcon,
     })
       .bindPopup(
-        `${disabilityPopupName}</br>
-            ${disabilityPopupAddress} ${disabilityPopupPostalCode}
-            <br/><button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
+        `${disabilityPopupName}<br>
+            ${disabilityPopupAddress} ${disabilityPopupPostalCode}<br>
+            ${disabilityPopupWebsite}<br>
+            <button class="btn btn-sm btn-success mt-2" data-toggle="modal" data-target="#referralModal">Refer Patient</button>`
       )
       .addTo(map)
       .openPopup();

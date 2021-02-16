@@ -28,7 +28,25 @@ document.querySelector('#restart-btn').addEventListener('click', () => {
 });
 
 // Refer button
+let storeReferrals = (key, value) => {
+  window.localStorage.setItem(key, JSON.stringify(value));
+};
+
+let retrieveReferrals = (key) => {
+  return JSON.parse(window.localStorage.getItem(key));
+};
+
+let referral = [];
 document.querySelector('#refer-btn').addEventListener('click', () => {
+  referral.push({
+    referrerName: '',
+    referrerOrg: '',
+    referrerEmail: '',
+    patientName: '',
+    patientIdent: '',
+    patientContact: '',
+    patientSR: '',
+  });
   document.querySelector(
     '#refer-success'
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;

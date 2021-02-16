@@ -14,14 +14,17 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
         .innerHTML;
       let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]
         .innerHTML;
+      let disabilityPopupWebsite = disabilityPopup.querySelectorAll('td')[17]
+        .innerHTML;
 
       new L.marker([
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${disabilityPopupName}
-          ${disabilityPopupAddress} ${disabilityPopupPostalCode}`
+          `${disabilityPopupName}<br>
+          ${disabilityPopupAddress} ${disabilityPopupPostalCode}<br>
+          ${disabilityPopupWebsite}`
         )
         .addTo(serviceLayer);
 
@@ -42,14 +45,17 @@ let callLayerSso = (responseData, serviceLayer, searchLayer) => {
       let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
       let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
       let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
+      let ssoPopupWebsite =
+        'https://www.msf.gov.sg/SSPC/Documents/SocialServiceOffices.pdf';
 
       new L.marker([
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${ssoPopupName}
-          ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}`
+          `${ssoPopupName}<br>
+          ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}<br>
+          <a href="${ssoPopupWebsite}" target="_blank">Intro to SSOs</a>`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -69,14 +75,16 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
       let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
       let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
       let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
+      let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
 
       new L.marker([
         feature.geometry.coordinates[1],
         feature.geometry.coordinates[0],
       ])
         .bindPopup(
-          `${fscPopupName}
-          ${fscPopupAddress} Singapore ${fscPopupPostalCode}`
+          `${fscPopupName}<br>
+          ${fscPopupAddress} Singapore ${fscPopupPostalCode}<br>
+          <a target="_blank" href="${fscPopupWebsite}">${fscPopupWebsite}</a>`
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
