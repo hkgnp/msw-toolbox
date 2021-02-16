@@ -53,12 +53,13 @@ let getServices = () => {
 };
 
 // FUNCTIONS: GET SERVICES LAYERS //
+let ssoPopupName;
 const getSsoLayer = () => {
   if (userService == searchSsoLayer) {
     let ssoPopup = document.createElement('div');
     ssoPopup.innerHTML = closestPt.layer.feature.properties.Description;
 
-    let ssoPopupName = ssoPopup.querySelectorAll('td')[4].innerHTML;
+    ssoPopupName = ssoPopup.querySelectorAll('td')[4].innerHTML;
     let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
     let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
     let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
@@ -79,12 +80,13 @@ const getSsoLayer = () => {
   }
 };
 
+let fscPopupName;
 const getFscLayer = () => {
   if (userService == searchFscLayer) {
     let fscPopup = document.createElement('div');
     fscPopup.innerHTML = closestPt.layer.feature.properties.Description;
 
-    let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
+    fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
     let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
     let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
     let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
@@ -103,13 +105,13 @@ const getFscLayer = () => {
   }
 };
 
+let disabilityPopupName;
 const getDisabilityLayer = () => {
   if (userService == searchDisabilityLayer) {
     let disabilityPopup = document.createElement('div');
     disabilityPopup.innerHTML = closestPt.layer.feature.properties.description;
 
-    let disabilityPopupName = disabilityPopup.querySelectorAll('td')[23]
-      .innerHTML;
+    disabilityPopupName = disabilityPopup.querySelectorAll('td')[23].innerHTML;
     let disabilityPopupAddress = disabilityPopup.querySelectorAll('td')[11]
       .innerHTML;
     let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]

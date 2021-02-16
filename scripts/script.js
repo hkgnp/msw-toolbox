@@ -13,6 +13,11 @@ document.querySelector('#selectedradio').addEventListener('click', () => {
   ).placeholder = `Searching for ${userService}`;
 });
 
+// New Referral Button
+document.querySelector('#new-referral').addEventListener('click', () => {
+  location.href = 'index.html';
+});
+
 // Set Timer for Using GPS to Search
 let count = 6;
 const loadingTimer = () => {
@@ -31,11 +36,13 @@ let retrieveReferrals = (key) => {
   console.log(JSON.parse(window.localStorage.getItem(key)));
 };
 
+////////// Store Form Content in localStorage //////////
 let referral = [];
 let patientReferral;
 // Refer button
 document.querySelector('#refer-btn').addEventListener('click', () => {
   referral.push({
+    referTo: ssoPopupName || fscPopupName || disabilityPopupName,
     referrerName: document.querySelector('#referrerName').value,
     referrerOrg: document.querySelector('#referrerOrg').value,
     referrerEmail: document.querySelector('#referrerEmail').value,
@@ -50,32 +57,32 @@ document.querySelector('#refer-btn').addEventListener('click', () => {
     '#refer-success'
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
   retrieveReferrals(patientReferral);
-  let i;
-  for (i = 0; i < referral.length; i++) {
-    document.querySelector('#referral-summary').innerHTML += `
+
+  document.querySelector('#referral-summary').innerHTML += `
       <p>
-      <h2><span class="badge bg-success mr-3 text-light">SUCCESS</span></h2>
+      <h4><span class="badge bg-success mr-3 text-light">SUCCESS</span></h4>
+      <h2>Referred To:</h2>
+      <h2>${referral[0].referTo}</h2>
 
       <h4>Referrer's Details</h4>
 
-      <p>Your Name: <u>${referral[i].referrerName}</u></p>
+      <p>Your Name: <u>${referral[0].referrerName}</u></p>
 
-      <p>Your Organisation: <u>${referral[i].referrerOrg}</u></p>
+      <p>Your Organisation: <u>${referral[0].referrerOrg}</u></p>
 
-      <p>Your Email: <u>${referral[i].referrerEmail}</u></p>
+      <p>Your Email: <u>${referral[0].referrerEmail}</u></p>
 
       <h4>Patient's Details</h4>
 
-      <p>Name: <u>${referral[i].patientName}</u></p>
+      <p>Name: <u>${referral[0].patientName}</u></p>
 
-      <p>Identifier: <u>${referral[i].patientIdent}</u></p>
+      <p>Identifier: <u>${referral[0].patientIdent}</u></p>
 
-      <p>Contact: <u>${referral[i].patientContact}</u></p>
+      <p>Contact: <u>${referral[0].patientContact}</u></p>
 
-      <p>Social Report: <u>${referral[i].patientSR}</u></div>
+      <p>Social Report: <u>${referral[0].patientSR}</u></div>
       </p>
       `;
-  }
 });
 
 document.querySelector('#close-btn').addEventListener('click', () => {
