@@ -27,31 +27,38 @@ document.querySelector('#restart-btn').addEventListener('click', () => {
   location.href = 'index.html';
 });
 
-// Refer button
+/////////// FUNCTION: localStorage ///////////
 let storeReferrals = (key, value) => {
   window.localStorage.setItem(key, JSON.stringify(value));
 };
 
 let retrieveReferrals = (key) => {
-  return JSON.parse(window.localStorage.getItem(key));
+  console.log(JSON.parse(window.localStorage.getItem(key)));
 };
 
 let referral = [];
+let patientReferral;
+// Refer button
 document.querySelector('#refer-btn').addEventListener('click', () => {
   referral.push({
-    referrerName: '',
-    referrerOrg: '',
-    referrerEmail: '',
-    patientName: '',
-    patientIdent: '',
-    patientContact: '',
-    patientSR: '',
+    referrerName: document.querySelector('#referrerName').value,
+    referrerOrg: document.querySelector('#referrerOrg').value,
+    referrerEmail: document.querySelector('#referrerEmail').value,
+    patientName: document.querySelector('#patientName').value,
+    patientIdent: document.querySelector('#patientIdent').value,
+    patientContact: document.querySelector('#patientContact').value,
+    patientSR: document.querySelector('#patientSR').value,
   });
+  // Store referral details in local storage
+  storeReferrals(patientReferral, referral);
   document.querySelector(
     '#refer-success'
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
 });
 
+document.querySelector('#get-referrals').addEventListener('click', () => {
+  retrieveReferrals(patientReferral);
+});
 // Scoll Reveal START
 const slideUp = {
   distance: '150%',
