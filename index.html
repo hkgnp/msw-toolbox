@@ -86,7 +86,9 @@
             <a href="#infographs"><li>Useful Information</li></a>
             <a href="#contact"><li>Contact</li></a>
             <li></li>
-            <a href="login.html"><li>Log In (Coming Soon)</li></a>
+            <a href="login.html" data-toggle="modal" data-target="#login"
+              ><li>Log In</li></a
+            >
           </ul>
         </div>
       </nav>
@@ -94,6 +96,52 @@
         <h2 class="px-4 pt-3">msw tool.box</h2>
       </div>
     </header>
+
+    <!--Login Modal-->
+    <div
+      class="modal fade"
+      id="login"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">User Login</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">Username:</label>
+              <input type="text" placeholder="Enter username" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password:</label>
+              <input type="password" placeholder="Enter password" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html"> Login </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--Instructions-->
     <summary id="home" class="instructions px-3">
@@ -435,7 +483,10 @@
           <h3>Contact</h3>
           <p>
             If you have any questions, reach me at
-            <code>hkgnp.git@gmail.com</code> or <i class="fab fa-github"></i>
+            <code>hkgnp.git@gmail.com</code> or
+            <a href="https://www.github.com/hkgnp" alt="Link to Github"
+              ><i class="fab fa-github"></i
+            ></a>
           </p>
           <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>

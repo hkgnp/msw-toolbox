@@ -59,6 +59,7 @@
           <span></span>
           <span></span>
           <ul id="menu">
+            <a href="#contact"><li>Contact</li></a>
             <a href="index.html"><li>Log Out</li></a>
           </ul>
         </div>
@@ -69,26 +70,7 @@
     </header>
 
     <!--List of Referrals-->
-
-    <main class="mx-3 mt-5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Referred To</th>
-            <th scope="col">Referrer Name</th>
-            <th scope="col">Referrer Org</th>
-            <th scope="col">Referrer Email</th>
-            <th scope="col">Patient Name</th>
-            <th scope="col">Patient Identifier</th>
-            <th scope="col">Patient Contact</th>
-            <th scope="col">Patient Social Report</th>
-          </tr>
-        </thead>
-        <tbody id="referral_history">
-          <!--Insert data from MongoDB-->
-        </tbody>
-      </table>
-    </main>
+    <main class="mx-3 mt-5" id="referralhistory"></main>
 
     <!--Footer and Contact-->
     <footer id="contact">
@@ -97,9 +79,12 @@
           <h3>Contact</h3>
           <p>
             If you have any questions, reach me at
-            <code>hkgnp.git@gmail.com</code> or <i class="fab fa-github"></i>
+            <code>hkgnp.git@gmail.com</code> or
+            <a href="https://www.github.com/hkgnp" alt="Link to Github"
+              ><i class="fab fa-github"></i
+            ></a>
           </p>
-          <p><a href="#top" alt="Back to Top">Back to top</a></p>
+          <p><a href="#referralhistory" alt="Back to Top">Back to top</a></p>
         </div>
       </div>
     </footer>

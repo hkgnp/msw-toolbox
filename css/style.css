@@ -124,3 +124,9 @@ h4 {
   display: flex;
   align-items: center;
 }
+
+#referralhistory {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
