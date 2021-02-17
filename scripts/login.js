@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   for (let p of response.data) {
     let html = `
-        <div class="card mb-2" style="width: 100%">
+        <div class="card mb-2 d-block" style="width: 100%">
             <div class="card-body">
             <h4 class="card-title bg-dark text-light p-3">${p.patientName}</h4>
                 <div class="card-text">
