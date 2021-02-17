@@ -40,17 +40,38 @@ let retrieveReferrals = (key) => {
 let referral = [];
 let patientReferral;
 // Refer button
-document.querySelector('#refer-btn').addEventListener('click', () => {
-  referral.push({
-    referTo: ssoPopupName || fscPopupName || disabilityPopupName,
-    referrerName: document.querySelector('#referrerName').value,
-    referrerOrg: document.querySelector('#referrerOrg').value,
-    referrerEmail: document.querySelector('#referrerEmail').value,
-    patientName: document.querySelector('#patientName').value,
-    patientIdent: document.querySelector('#patientIdent').value,
-    patientContact: document.querySelector('#patientContact').value,
-    patientSR: document.querySelector('#patientSR').value,
-  });
+document.querySelector('#refer-btn').addEventListener('click', async () => {
+  // Define variables for use with Mongo and localStorage
+  let referTo = ssoPopupName || fscPopupName || disabilityPopupName;
+  let referrerName = document.querySelector('#referrerName').value;
+  let referrerOrg = document.querySelector('#referrerOrg').value;
+  let referrerEmail = document.querySelector('#referrerEmail').value;
+  let patientName = document.querySelector('#patientName').value;
+  let patientIdent = document.querySelector('#patientIdent').value;
+  let patientContact = document.querySelector('#patientContact').value;
+  let patientSR = document.querySelector('#patientSR').value;
+
+  // Define payload
+  let payLoad = {
+    referTo: referTo,
+    referrerName: referrerName,
+    referrerOrg: referrerOrg,
+    referrerEmail: referrerEmail,
+    patientName: patientName,
+    patientIdent: patientIdent,
+    patientContact: patientContact,
+    patientSR: patientSR,
+  };
+
+  // Push form values to array for localStorage
+  referral.push(payLoad);
+
+  // Send to MongoDB
+  await axios.post(
+    'https://polar-retreat-01092.herokuapp.com/referrals',
+    payLoad
+  );
+
   // Store referral details in local storage
   storeReferrals(patientReferral, referral);
   document.querySelector(
