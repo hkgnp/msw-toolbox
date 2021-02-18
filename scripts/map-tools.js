@@ -1,13 +1,4 @@
-/////////// SET ICONS /////////////
-const youAreHereIcon = L.icon({
-  iconUrl: 'youarehere.png',
-  iconAnchor: [18, 36],
-});
-
-const pinIcon = L.icon({ iconUrl: 'pin.png', iconAnchor: [18, 37] });
-
 ///////////// SECTION: ALL FUNCTIONS HERE /////////////
-
 // FUNCTION: GET GPS LOCATION //
 let currPosition = [];
 let getGpsLocation = () => {
@@ -68,7 +59,7 @@ const getSsoLayer = () => {
       'https://www.msf.gov.sg/SSPC/Documents/SocialServiceOffices.pdf';
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-      icon: pinIcon,
+      icon: searchIcon,
     })
       .bindPopup(
         `${ssoPopupName}<br>
@@ -93,7 +84,7 @@ const getFscLayer = () => {
     let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-      icon: pinIcon,
+      icon: searchIcon,
     })
       .bindPopup(
         `${fscPopupName}<br>
@@ -121,7 +112,7 @@ const getDisabilityLayer = () => {
       .innerHTML;
 
     L.marker([closestPt.latlng.lat, closestPt.latlng.lng], {
-      icon: pinIcon,
+      icon: searchIcon,
     })
       .bindPopup(
         `${disabilityPopupName}<br>

@@ -17,10 +17,10 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
       let disabilityPopupWebsite = disabilityPopup.querySelectorAll('td')[17]
         .innerHTML;
 
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
+      new L.marker(
+        [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+        { icon: disabilityToggleIcon }
+      )
         .bindPopup(
           `${disabilityPopupName}<br>
           ${disabilityPopupAddress} ${disabilityPopupPostalCode}<br>
@@ -48,10 +48,10 @@ let callLayerSso = (responseData, serviceLayer, searchLayer) => {
       let ssoPopupWebsite =
         'https://www.msf.gov.sg/SSPC/Documents/SocialServiceOffices.pdf';
 
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
+      new L.marker(
+        [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+        { icon: ssoToggleIcon }
+      )
         .bindPopup(
           `${ssoPopupName}<br>
           ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}<br>
@@ -77,10 +77,10 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
       let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
       let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
 
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
+      new L.marker(
+        [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+        { icon: fscToggleIcon }
+      )
         .bindPopup(
           `${fscPopupName}<br>
           ${fscPopupAddress} Singapore ${fscPopupPostalCode}<br>
