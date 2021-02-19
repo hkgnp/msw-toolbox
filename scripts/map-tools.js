@@ -226,7 +226,7 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
   })
     .bindPopup('Your Location')
     .addTo(map);
-  console.log(currPosition);
+
   // map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 13);
   map.fitBounds([
     [[currPosition[0], currPosition[1]]],

@@ -39,6 +39,7 @@ let retrieveReferrals = (key) => {
 ////////// Store Form Content in localStorage //////////
 let referral = [];
 let patientReferral;
+
 // Refer button
 document.querySelector('#refer-btn').addEventListener('click', async () => {
   // Define variables for use with Mongo and localStorage
@@ -74,6 +75,7 @@ document.querySelector('#refer-btn').addEventListener('click', async () => {
 
   // Store referral details in local storage
   storeReferrals(patientReferral, referral);
+
   document.querySelector(
     '#refer-success'
   ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
