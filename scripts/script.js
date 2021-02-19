@@ -33,7 +33,7 @@ let storeReferrals = (key, value) => {
 };
 
 let retrieveReferrals = (key) => {
-  console.log(JSON.parse(window.sessionStorage.getItem(key)));
+  JSON.parse(window.sessionStorage.getItem(key));
 };
 
 ////////// Store Form Content in localStorage //////////
