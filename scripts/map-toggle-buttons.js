@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-///////////// SECTION: ALL FUNCTIONS HERE /////////////
-
-=======
 ///////////// MODEL /////////////
->>>>>>> dev
 // FUNCTION: CALL DISABILITY LAYER //
 let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
   layer = L.geoJson(responseData, {
@@ -18,19 +13,6 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
         .innerHTML;
       let disabilityPopupPostalCode = disabilityPopup.querySelectorAll('td')[9]
         .innerHTML;
-<<<<<<< HEAD
-
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
-        .bindPopup(
-          `${disabilityPopupName}
-          ${disabilityPopupAddress} ${disabilityPopupPostalCode}`
-        )
-        .addTo(serviceLayer);
-      // layer.bindPopup(feature.properties.Description);
-=======
       let disabilityPopupWebsite = disabilityPopup.querySelectorAll('td')[17]
         .innerHTML;
 
@@ -45,7 +27,6 @@ let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
         )
         .addTo(serviceLayer);
 
->>>>>>> dev
       searchLayer.push(layer);
     },
   });
@@ -63,16 +44,6 @@ let callLayerSso = (responseData, serviceLayer, searchLayer) => {
       let ssoPopupBlock = ssoPopup.querySelectorAll('td')[5].innerHTML;
       let ssoPopupStreet = ssoPopup.querySelectorAll('td')[8].innerHTML;
       let ssoPopupPostalCode = ssoPopup.querySelectorAll('td')[3].innerHTML;
-<<<<<<< HEAD
-
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
-        .bindPopup(
-          `${ssoPopupName}
-          ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}`
-=======
       let ssoPopupWebsite =
         'https://www.msf.gov.sg/SSPC/Documents/SocialServiceOffices.pdf';
 
@@ -84,7 +55,6 @@ let callLayerSso = (responseData, serviceLayer, searchLayer) => {
           `${ssoPopupName}<br>
           ${ssoPopupBlock} ${ssoPopupStreet} ${ssoPopupPostalCode}<br>
           <a href="${ssoPopupWebsite}" target="_blank">Intro to SSOs</a>`
->>>>>>> dev
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -104,16 +74,6 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
       let fscPopupName = fscPopup.querySelectorAll('td')[9].innerHTML;
       let fscPopupAddress = fscPopup.querySelectorAll('td')[3].innerHTML;
       let fscPopupPostalCode = fscPopup.querySelectorAll('td')[2].innerHTML;
-<<<<<<< HEAD
-
-      new L.marker([
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ])
-        .bindPopup(
-          `${fscPopupName}
-          ${fscPopupAddress} Singapore ${fscPopupPostalCode}`
-=======
       let fscPopupWebsite = fscPopup.querySelectorAll('td')[6].innerHTML;
 
       new L.marker(
@@ -124,7 +84,6 @@ let callLayerFsc = (responseData, serviceLayer, searchLayer) => {
           `${fscPopupName}<br>
           ${fscPopupAddress} Singapore ${fscPopupPostalCode}<br>
           <a target="_blank" href="${fscPopupWebsite}">${fscPopupWebsite}</a>`
->>>>>>> dev
         )
         .addTo(serviceLayer);
       // layer.bindPopup(feature.properties.Description);
@@ -140,11 +99,7 @@ let toggleButtons = (serviceLayer) => {
     : map.removeLayer(serviceLayer);
 };
 
-<<<<<<< HEAD
-///////////// SECTION: CREATE LAYERS /////////////
-=======
 ///////////// VIEW /////////////
->>>>>>> dev
 
 // Create Disability Layer
 let searchDisabilityLayer = [];
@@ -170,32 +125,7 @@ let fscLayer = L.markerClusterGroup();
   callLayerFsc(response.data, fscLayer, searchFscLayer);
 })();
 
-<<<<<<< HEAD
-// Trying KML
-
-// let kmlFile = 'geojson/eldercare.kml';
-
-// let elderCarePopup = L.geoJson(null, {
-//   pointToLayer: (feature, latlng) => {
-//     return L.marker(latlng).bindPopup(feature.properties.name);
-//   },
-// });
-
-// let elderCareLayer = omnivore
-//   .kml(kmlFile, null, elderCarePopup)
-//   .on('read', (centerMarker) => {
-//     var cM = map.project(centerMarker.popup._latlng);
-//     cM.y -= centerMarker.popup._container.clientHeight / 2;
-//     map.setZoom(16, { animate: true });
-//     map.panTo(map.unproject(cM), { animate: true });
-//   })
-//   .addTo(map);
-
-// TOGGLE BUTTONS //
-
-=======
 ///////////// CONTROLLER /////////////
->>>>>>> dev
 // Toggle Disability Button
 document.querySelector('#disability-btn').addEventListener('click', () => {
   map.closePopup();

@@ -78,21 +78,6 @@ h4 {
   color: rgba(239, 71, 111);
   border-radius: 12px;
 }
-<<<<<<< HEAD
-/* #services > .row {
-  height: 80px;
-  margin: 10px;
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  color: black;
-  border-radius: 15px;
-  margin: 10px;
-  border: 1px dashed black;
-} */
-=======
->>>>>>> dev
 
 #location {
   height: 100vh;
@@ -106,8 +91,6 @@ h4 {
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
 #search-results .badge {
   background-color: rgba(17, 138, 178);
   color: rgb(255, 255, 255);
@@ -117,7 +100,6 @@ h4 {
   color: blue;
 }
 
->>>>>>> dev
 #infograph {
   height: 100vh;
   display: flex;
@@ -130,25 +112,19 @@ h4 {
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
 #techcredits {
   height: 100vh;
   display: flex;
   align-items: center;
 }
 
->>>>>>> dev
 #contact {
   height: 100vh;
   display: flex;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
 
 #referralhistory {
   display: flex;
   align-items: center;
 }
->>>>>>> dev

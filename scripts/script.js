@@ -13,14 +13,11 @@ document.querySelector('#selectedradio').addEventListener('click', () => {
   ).placeholder = `Searching for ${userService}`;
 });
 
-<<<<<<< HEAD
-=======
 // New Referral Button
 document.querySelector('#new-referral').addEventListener('click', () => {
   location.href = 'index.html';
 });
 
->>>>>>> dev
 // Set Timer for Using GPS to Search
 let count = 6;
 const loadingTimer = () => {
@@ -30,11 +27,6 @@ const loadingTimer = () => {
   ).innerHTML = `Please wait: ${count}s to get your location`;
 };
 
-<<<<<<< HEAD
-// Restart search
-document.querySelector('#restart-btn').addEventListener('click', () => {
-  location.href = 'index.html';
-=======
 /////////// FUNCTION: localStorage ///////////
 let storeReferrals = (key, value) => {
   window.sessionStorage.setItem(key, JSON.stringify(value));
@@ -118,7 +110,6 @@ document.querySelector('#refer-btn').addEventListener('click', async () => {
 
 document.querySelector('#close-btn').addEventListener('click', () => {
   document.querySelector('#refer-success').innerHTML = '';
->>>>>>> dev
 });
 
 // Scoll Reveal START
@@ -140,11 +131,7 @@ ScrollReveal().reveal('.slide-up', slideUp);
 
 ScrollReveal().reveal('.logo', { delay: 500 });
 
-<<<<<<< HEAD
-ScrollReveal().reveal('.instructions', { delay: 1500 });
-=======
 ScrollReveal().reveal('.instructions', { delay: 1100 });
->>>>>>> dev
 
 ScrollReveal().reveal('#location', singlePage);
 
@@ -152,12 +139,7 @@ ScrollReveal().reveal('#search-results', singlePage);
 
 ScrollReveal().reveal('#aboutthisapp', singlePage);
 
-<<<<<<< HEAD
-ScrollReveal().reveal('#contact', singlePage);
-
-=======
 ScrollReveal().reveal('#techcredits', singlePage);
 
 ScrollReveal().reveal('#contact', singlePage);
->>>>>>> dev
 // Scroll reveal END
