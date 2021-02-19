@@ -29,11 +29,11 @@ const loadingTimer = () => {
 
 /////////// FUNCTION: localStorage ///////////
 let storeReferrals = (key, value) => {
-  window.localStorage.setItem(key, JSON.stringify(value));
+  window.sessionStorage.setItem(key, JSON.stringify(value));
 };
 
 let retrieveReferrals = (key) => {
-  console.log(JSON.parse(window.localStorage.getItem(key)));
+  console.log(JSON.parse(window.sessionStorage.getItem(key)));
 };
 
 ////////// Store Form Content in localStorage //////////

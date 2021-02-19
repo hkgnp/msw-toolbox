@@ -1,5 +1,4 @@
-///////////// SECTION: ALL FUNCTIONS HERE /////////////
-
+///////////// MODEL /////////////
 // FUNCTION: CALL DISABILITY LAYER //
 let callLayerDisability = (responseData, serviceLayer, searchLayer) => {
   layer = L.geoJson(responseData, {
@@ -100,7 +99,7 @@ let toggleButtons = (serviceLayer) => {
     : map.removeLayer(serviceLayer);
 };
 
-///////////// SECTION: CREATE LAYERS /////////////
+///////////// VIEW /////////////
 
 // Create Disability Layer
 let searchDisabilityLayer = [];
@@ -126,28 +125,7 @@ let fscLayer = L.markerClusterGroup();
   callLayerFsc(response.data, fscLayer, searchFscLayer);
 })();
 
-// Trying KML
-
-// let kmlFile = 'geojson/eldercare.kml';
-
-// let elderCarePopup = L.geoJson(null, {
-//   pointToLayer: (feature, latlng) => {
-//     return L.marker(latlng).bindPopup(feature.properties.name);
-//   },
-// });
-
-// let elderCareLayer = omnivore
-//   .kml(kmlFile, null, elderCarePopup)
-//   .on('read', (centerMarker) => {
-//     var cM = map.project(centerMarker.popup._latlng);
-//     cM.y -= centerMarker.popup._container.clientHeight / 2;
-//     map.setZoom(16, { animate: true });
-//     map.panTo(map.unproject(cM), { animate: true });
-//   })
-//   .addTo(map);
-
-// TOGGLE BUTTONS //
-
+///////////// CONTROLLER /////////////
 // Toggle Disability Button
 document.querySelector('#disability-btn').addEventListener('click', () => {
   map.closePopup();

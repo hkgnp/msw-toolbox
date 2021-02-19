@@ -88,29 +88,19 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 
 # Tech/framework used
 
-- Github
-- HTML
-- CSS
-- Vanilla Javascript
-- Leaflet
-- Leaflet Geometry Utility
-- Bootstrap
-- Google Fonts
-- Font Awesome
-- MongoDB
-- Axios
-- ApexCharts
-
-- Built with [VS Code](https://code.visualstudio.com/)
-
-# API References
-
-- [OneMap](https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3)
-- [Data.gov.sg](https://data.gov.sg/)
-- Open Street Map
-
-# Credits
-
+- [Github](https://www.github.com/)
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [Vanilla Javascript](https://en.wikipedia.org/wiki/JavaScript)
+- [Leaflet](https://leafletjs.com/)
+- [Leaflet Geometry Utility](https://github.com/makinacorpus/Leaflet.GeometryUtil)
+- [Leaflet Omnivore](https://github.com/mapbox/leaflet-omnivore)
+- [Bootstrap](https://getbootstrap.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [MongoDB](https://www.mongodb.com/cloud/atlas)
+- [Axios](https://github.com/axios/axios)
+- [ApexCharts.JS](https://apexcharts.com/)
 - [CSS Menu](https://codepen.io/erikterwan/pen/EVzeRP)
 - [Scroll Reveal](https://scrollrevealjs.org/api/reveal.html)
 - [Flat Icons (for the pins)](https://www.flaticon.com)
@@ -118,14 +108,23 @@ Code is formatted using Prettier (installed as an extension in VS Code).
   - [Smashicons](https://smashicons.com)
   - [Pixel Perfect](https://icon54.com)
   - [srip](https://www.flaticon.com)
+- Built with [VS Code](https://code.visualstudio.com/)
+
+# API References
+
+- [OneMap](https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3)
+- [Data.gov.sg](https://data.gov.sg/)
+- [Open Street Map](https://www.openstreetmap.org/)
+- [Mapbox](https://www.mapbox.com/)
 
 # Acknowledgments
 
 - Mr Paul Chor
 - Mr Ace Liang
 - Mr Alexander Yan
-- Hidayah
-- Howard
-- Julius
-- Ryan
-- Ying Ru
+- My wonderful classmates who have been part of this journey together:
+  - Hidayah
+  - Howard
+  - Julius
+  - Ryan
+  - Ying Ru
