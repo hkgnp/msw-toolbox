@@ -86,7 +86,23 @@ The app must be able to perform the following functions:
 Code is formatted using Prettier (installed as an extension in VS Code).
 [![js-standard-style](https://img.shields.io/badge/code%20style-prettier-brightgreen.svg?style=flat)](https://github.com/prettier/prettier)
 
-# Tech/framework used
+# Deployment
+
+`msw-toolbox` is deployed to Github Pages. MongoDB is used to store the referral information for retrieval, and the API used to communicate with MongoDB is hosted on Heroku. This API was specially created for this project and it can be found on [mswapi](https://github.com/hkgnp/mswapi). Dependency details for the API can be found on the page directly.
+
+The dependencies for `msw-toolbox` can be found in the section below under "Tech/frameworks Used". Other than the CSS Menu (by Erik Terwan), Flat icons for the map pins, and geojson files, the other dependencies do not have to be downloaded as they are called through CDNs. Hence, if you would like to deploy this app on your own server, please ensure that the below files and folders are forked as well.
+
+```
+/geojson
+/pins
+/css/menu.css
+```
+
+Note: The geojson files are updated as of Jan 2021. There may be more updated datasets by the time you read this. However, the infograph data are obtained through a real-time API.
+
+# Tech/frameworks Used
+
+This app is made only possible thanks to the following technologies:
 
 - [Github](https://www.github.com/)
 - [HTML](https://en.wikipedia.org/wiki/HTML)
@@ -99,6 +115,7 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [MongoDB](https://www.mongodb.com/cloud/atlas)
+- [Heroku](https://www.heroku.com)
 - [Axios](https://github.com/axios/axios)
 - [ApexCharts.JS](https://apexcharts.com/)
 - [CSS Menu](https://codepen.io/erikterwan/pen/EVzeRP)
@@ -111,6 +128,8 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 - Built with [VS Code](https://code.visualstudio.com/)
 
 # API References
+
+And it is also made only possible thanks to the painstaking work done by the following organisations:
 
 - [OneMap](https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3)
 - [Data.gov.sg](https://data.gov.sg/)
@@ -128,3 +147,7 @@ Code is formatted using Prettier (installed as an extension in VS Code).
   - Julius
   - Ryan
   - Ying Ru
+
+# Testing
+
+For assignment purposes, please refer to [this PDF]() for the test cases.

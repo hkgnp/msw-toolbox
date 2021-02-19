@@ -131,7 +131,7 @@ ScrollReveal().reveal('.slide-up', slideUp);
 
 ScrollReveal().reveal('.logo', { delay: 500 });
 
-ScrollReveal().reveal('.instructions', { delay: 1500 });
+ScrollReveal().reveal('.instructions', { delay: 1100 });
 
 ScrollReveal().reveal('#location', singlePage);
 
@@ -139,6 +139,7 @@ ScrollReveal().reveal('#search-results', singlePage);
 
 ScrollReveal().reveal('#aboutthisapp', singlePage);
 
-ScrollReveal().reveal('#contact', singlePage);
+ScrollReveal().reveal('#techcredits', singlePage);
 
+ScrollReveal().reveal('#contact', singlePage);
 // Scroll reveal END
