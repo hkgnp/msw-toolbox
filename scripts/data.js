@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+///////////// MODEL /////////////
+>>>>>>> dev
 baseURL = 'https://data.gov.sg/api/action/datastore_search';
 
 ////////// Statistics for the Tribunal for the Maintenance of Parents //////////

@@ -78,6 +78,7 @@ h4 {
   color: rgba(239, 71, 111);
   border-radius: 12px;
 }
+<<<<<<< HEAD
 /* #services > .row {
   height: 80px;
   margin: 10px;
@@ -90,6 +91,8 @@ h4 {
   margin: 10px;
   border: 1px dashed black;
 } */
+=======
+>>>>>>> dev
 
 #location {
   height: 100vh;
@@ -103,6 +106,18 @@ h4 {
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+#search-results .badge {
+  background-color: rgba(17, 138, 178);
+  color: rgb(255, 255, 255);
+}
+
+#referral-summary > p {
+  color: blue;
+}
+
+>>>>>>> dev
 #infograph {
   height: 100vh;
   display: flex;
@@ -115,8 +130,25 @@ h4 {
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+#techcredits {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+>>>>>>> dev
 #contact {
   height: 100vh;
   display: flex;
   align-items: center;
 }
+<<<<<<< HEAD
+=======
+
+#referralhistory {
+  display: flex;
+  align-items: center;
+}
+>>>>>>> dev

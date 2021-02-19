@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 ////////// Render Charts //////////
 
 // Render Tribunal of Maintenance of Parents Chart
 const optionsTribunal = {
+=======
+///////////// VIEW /////////////
+// Render Tribunal of Maintenance of Parents Chart
+const optionsTribunal = {
+  theme: {
+    palette: 'palette2',
+  },
+>>>>>>> dev
   chart: {
     type: 'bar',
     height: '400px',
@@ -13,6 +22,12 @@ const optionsTribunal = {
       seriesName: 'Applications for Variation',
       title: {
         text: 'Applications for Variation',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#3F51B5',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -26,6 +41,12 @@ const optionsTribunal = {
       opposite: true,
       title: {
         text: 'New Applications for Maintenance',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#03A9F4',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -49,6 +70,12 @@ tribunalResponseChart.render();
 
 // Render Healthcare Attendances Chart
 let optionsHealthAttendances = {
+<<<<<<< HEAD
+=======
+  theme: {
+    palette: 'palette3',
+  },
+>>>>>>> dev
   chart: {
     type: 'line',
     height: '400px',
@@ -64,6 +91,12 @@ let optionsHealthAttendances = {
       seriesName: 'Acute Hospital Admissions',
       title: {
         text: 'Acute Hospital Admissions',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#33B2DF',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -76,6 +109,12 @@ let optionsHealthAttendances = {
       seriesName: 'Emergency Department Attendances',
       title: {
         text: 'Emergency Department Attendances',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#546E7A',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -89,6 +128,12 @@ let optionsHealthAttendances = {
       opposite: true,
       title: {
         text: 'Polyclinic Attendances',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#D4526E',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -102,6 +147,12 @@ let optionsHealthAttendances = {
       opposite: true,
       title: {
         text: 'SOC Attendances',
+<<<<<<< HEAD
+=======
+        style: {
+          color: '#13D8AA',
+        },
+>>>>>>> dev
       },
       axisTicks: {
         show: true,
@@ -128,11 +179,37 @@ healthAttendancesChart.render();
 
 // Render Child and Adult Protection Charts
 const optionsApsCpsChart = {
+<<<<<<< HEAD
   chart: {
     type: 'bar',
     height: '400px',
   },
   series: [],
+=======
+  stroke: {
+    curve: 'smooth',
+  },
+  theme: {
+    palette: 'palette6',
+  },
+  chart: {
+    type: 'line',
+    height: '400px',
+  },
+  series: [],
+  yaxis: {
+    show: true,
+    title: {
+      text: 'Count',
+    },
+    axisTicks: {
+      show: true,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
+>>>>>>> dev
   noData: {
     text: 'Loading...',
   },
@@ -145,7 +222,11 @@ let apsCpsChart = new ApexCharts(
 apsCpsChart.render();
 // End Child and Adult Protection Charts
 
+<<<<<<< HEAD
 ////////// AXIOS LOADED DATASETS //////////
+=======
+////////// CONTROLLER //////////
+>>>>>>> dev
 window.addEventListener('DOMContentLoaded', async () => {
   // Load Tribunal Dataset
   let tribunalResponse = await loadTribunalData();
@@ -165,7 +246,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     },
   ]);
 
+<<<<<<< HEAD
   // Load healthcare dataset
+=======
+  // Load healthcare dataset (Already has x and y values)
+>>>>>>> dev
   // Function to push health attendances to array that will be used in the chart
   let healthAttendancesResponse = await loadInpatientOutpatientAttendances();
 
@@ -195,25 +280,40 @@ window.addEventListener('DOMContentLoaded', async () => {
     {
       name: 'Acute Hospital Admissions',
       data: acuteHospitalAdmissions,
+<<<<<<< HEAD
+=======
+      type: 'bar',
+>>>>>>> dev
     },
     {
       name: 'Emergency Department Attendances',
       data: accidentAttendances,
+<<<<<<< HEAD
+=======
+      type: 'bar',
+>>>>>>> dev
     },
     {
       name: 'Polyclinic Attendances',
       data: polyclinicAttendnaces,
+<<<<<<< HEAD
       type: 'bar',
+=======
+>>>>>>> dev
     },
     {
       name: 'SOC Attendances',
       data: socAttendances,
+<<<<<<< HEAD
       type: 'bar',
+=======
+>>>>>>> dev
     },
   ]);
 
   // Load APS and CPS Statistics
   let apsCpsReponse = await loadApsCpsStats();
+<<<<<<< HEAD
   console.log(apsCpsReponse);
 
   let apsInvestigations = apsCpsReponse.apsInvestigations.map(
@@ -243,6 +343,33 @@ window.addEventListener('DOMContentLoaded', async () => {
     {
       name: 'Child Protection Services Investigations',
       data: cpsInvestigations,
+=======
+
+  // Function to get CPS Investigations array
+  let pushCpsInvestigations = (abuseType) => {
+    let arr = apsCpsReponse.cpsInvestigations.filter(
+      (r) => r.type_of_abuse == abuseType
+    );
+    return arr.map((i) => ({ x: i.year, y: i.count }));
+  };
+
+  let physicalAbuse = pushCpsInvestigations('Physical ');
+  let sexualAbuse = pushCpsInvestigations('Sexual ');
+  let neglectAbuse = pushCpsInvestigations('Neglect ');
+
+  apsCpsChart.updateSeries([
+    {
+      name: 'Physical Abuse',
+      data: physicalAbuse,
+    },
+    {
+      name: 'Sexual Abuse',
+      data: sexualAbuse,
+    },
+    {
+      name: 'Neglect Abuse',
+      data: neglectAbuse,
+>>>>>>> dev
     },
   ]);
 });
