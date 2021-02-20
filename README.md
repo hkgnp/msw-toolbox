@@ -17,6 +17,8 @@ Access the latest statistics from Data.gov.sg to see the latest trends.
 
 Reduce the time spent referring your patient to services by using the one-stop system. Select the service you want to refer your patient to, enter your patient's postal code or simply use the GPS on your mobile device, and the nearest service will appear. Simply click on the 'Refer' button, and fill out the form. Upon clicking submit, your referral will be immediately sent to the agency for processing.
 
+As the agency, you can "login" to the system and see the referrals sent to you. You can process each referral, and upon clicking on the 'Process' button, the referral is removed from the database.
+
 # Project Summary
 
 This toolbox is to be used by Medical Social Workers (MSWs) and other healthcare professionals at their patients' homes.
