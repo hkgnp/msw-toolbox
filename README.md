@@ -153,3 +153,18 @@ And it is also made only possible thanks to the painstaking work done by the fol
 # Testing
 
 For assignment purposes, please refer to [this PDF]() for the test cases.
+|Category|Actions|Expected Outcome|
+|--------|-------|----------------|
+|General|Mobile-respnosiveness|Thanks to Bootstrap, site elements will resize depending on size|
+|Ecomap Discoverer|1. Click on menu|Menu appears|
+||2. Click on Discover Ecomap|Page scrolls to map|
+||3. Click on GPS button|Your GPS location will appear as a marker on the map|
+||4. Toggle services' buttons: 'SSO', 'Disability', 'FSC'|Different markers will appear & disappear depending on which button is pressed|
+|Useful information|1. Click on menu|Menu appears|
+||2. Click on Useful Information|Page scrolls to chart accordian|
+||3. Click on each accordian|Chart will display depending on accordian clicked|
+||4. Click on legend|Thanks to ApexCharts, data series will toggle depending on legend selection|
+|Referral System|1. Click on the service you want to refer the patient to: 'Social Service Office', 'Family Service Centre', 'Disability Services'|Radio button will be highlighted depending on selection. Page will then scroill to the Step 2|
+||2a. Key in your postal code and press 'Submit'|Page will scroll to Step 3|
+||2b. Click 'Use My Location' to use the GPS location|Page will scroll to Step 3 after a 5s delay (timer shown) as it takes more time to calculate the closest point using GPS|
+||3a.
