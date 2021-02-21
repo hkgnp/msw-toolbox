@@ -1,48 +1,4 @@
-///////////// SECTION: ALL FUNCTIONS HERE /////////////
-
-// FUNCTION: CHOOSE GPS OR POSTAL CODE FOR TOGGLE BUTTONS
-document
-  .querySelector('#selectGPSorPostalCode')
-  .addEventListener('change', () => {
-    if (document.querySelector('#selectGPSorPostalCode').value == 'gps') {
-      getGpsLocation();
-      document.querySelector('#postalcodepopup').innerHTML = '';
-    } else {
-      let html = `
-        <div class="d-flex px-3 w-100 my-0">
-          <input class="form-control-sm" type="text" placeholder="Enter postal code" id="search-postalcodeinput" size="" /><button id="search-postalcodebtn" class="btn btn-info btn-sm mx-2">Submit</button>
-        </div>
-      `;
-      document.querySelector('#postalcodepopup').innerHTML = html;
-      document
-        .querySelector('#search-postalcodebtn')
-        .addEventListener('click', async () => {
-          let response = await axios.get(
-            'https://developers.onemap.sg/commonapi/search',
-            {
-              params: {
-                searchVal: document.querySelector('#search-postalcodeinput')
-                  .value,
-                returnGeom: 'Y',
-                getAddrDetails: 'Y',
-                pageNum: '1',
-              },
-            }
-          );
-          let postalCodeResults = response.data.results[0];
-          searchPostalCode = [
-            parseFloat(postalCodeResults.LATITUDE),
-            parseFloat(postalCodeResults.LONGITUDE),
-          ];
-
-          L.marker(searchPostalCode, {
-            icon: youAreHereIcon,
-          }).addTo(map);
-
-          map.setView(searchPostalCode, 12);
-        });
-    }
-  });
+///////////// MDOEL /////////////
 
 // FUNCTION: GET GPS LOCATION //
 let currPosition = [];
@@ -58,7 +14,7 @@ let getGpsLocation = () => {
       bounceOnAdd: true,
       icon: youAreHereIcon,
     })
-      .bindPopup('Your Location')
+      .bindPopup('Your GPS Location')
       .addTo(map)
       .on('click', () => {
         map.setView([position.coords.latitude, position.coords.longitude], 14);
@@ -211,7 +167,9 @@ let resultsFromPostalCode = () => {
     // Set pin for Postal Code
     L.marker(searchPostalCode, {
       icon: youAreHereIcon,
-    }).addTo(map);
+    })
+      .bindPopup('Your Postal Code Location')
+      .addTo(map);
 
     // Set view of map after pop-up is triggered //
     // map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 15);
@@ -222,13 +180,7 @@ let resultsFromPostalCode = () => {
   })();
 };
 
-///////////// SECTION: ACTIONS HERE /////////////
-
-// Find current position of user
-// document.querySelector('#whereami').addEventListener('click', () => {
-//   getGpsLocation();
-// });
-
+///////////// CONTROLLER / VIEW /////////////
 // Use "Postal Code" to find nearest services"
 document.querySelector('#submit-search').addEventListener('click', () => {
   if (
@@ -251,6 +203,7 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
   await delay(5000);
   clearInterval(timer);
   document.location.href = '#search-results';
+  document.querySelector('#timer').innerHTML = '';
   ///////////// SECTION: USER INPUTS /////////////
 
   getServices();
@@ -269,7 +222,7 @@ document.querySelector('#uselocation').addEventListener('click', async () => {
   L.marker([currPosition[0], currPosition[1]], {
     icon: youAreHereIcon,
   })
-    .bindPopup('Your Location')
+    .bindPopup('Your GPS Location')
     .addTo(map);
   // map.setView([closestPt.latlng.lat, closestPt.latlng.lng], 13);
   map.fitBounds([

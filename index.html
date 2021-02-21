@@ -252,9 +252,28 @@
     <!--Search Results-->
     <section id="search-results" class="row px-3">
       <div class="col">
+        <!--New referral button-->
+        <div class="row mb-2">
+          <div class="col">
+            <button id="new-referral" class="btn btn-danger btn-sm">
+              New Referral
+            </button>
+            <a
+              class="btn btn-primary btn-sm"
+              data-toggle="collapse"
+              href="#collapseToggleButtons"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseToggleButtons"
+            >
+              EcoMap Toggle Buttons
+            </a>
+          </div>
+        </div>
+
         <!--Toggle buttons row-->
-        <div class="row mb-0">
-          <div class="col mb-0">
+        <div class="row mb-0 collapse" id="collapseToggleButtons">
+          <div class="col-4 mb-0">
             <div class="form-group">
               <select class="form-control-sm" id="selectGPSorPostalCode">
                 <option>--Select--</option>
@@ -263,33 +282,23 @@
               </select>
             </div>
           </div>
-          <div class="col-7 mb-0">
-            <button id="sso-btn" class="btn btn-info btn-sm mb-2">SSO</button>
-            <button id="disability-btn" class="btn btn-info btn-sm mb-2">
+          <div class="col-7 m-0">
+            <button id="sso-btn" class="btn btn-info btn-sm mb-0">SSO</button>
+            <button id="disability-btn" class="btn btn-info btn-sm mb-0">
               Disability
             </button>
-            <button id="fsc-btn" class="btn btn-info btn-sm mb-2">FSC</button>
+            <button id="fsc-btn" class="btn btn-info btn-sm mb-0">FSC</button>
           </div>
-        </div>
-
-        <!--Postal code popup-->
-        <div class="row mb-2">
-          <span id="postalcodepopup"></span>
+          <!--Postal code popup-->
+          <div class="row mb-2 px-3">
+            <span id="postalcodepopup"></span>
+          </div>
         </div>
 
         <!--Map row-->
         <div class="row">
           <div class="col">
             <div id="mapid"></div>
-          </div>
-        </div>
-
-        <!--New referral button-->
-        <div class="row mt-2">
-          <div class="col">
-            <button id="new-referral" class="btn btn-danger btn-sm">
-              New Referral
-            </button>
           </div>
         </div>
       </div>
@@ -613,8 +622,8 @@
     <!-- Own JavaScript -->
     <script src="scripts/map-base.js"></script>
     <script src="scripts/pins.js"></script>
-    <script src="scripts/map-toggle-buttons.js"></script>
     <script src="scripts/map-tools.js"></script>
+    <script src="scripts/map-toggle-buttons.js"></script>
     <script src="scripts/data.js"></script>
     <script src="scripts/infographs.js"></script>
     <script src="scripts/script.js"></script>

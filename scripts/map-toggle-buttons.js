@@ -146,3 +146,55 @@ document.querySelector('#fsc-btn').addEventListener('click', () => {
   resetView();
   toggleButtons(fscLayer);
 });
+
+// Choose GPS or Postal Code for toggle buttons
+document
+  .querySelector('#selectGPSorPostalCode')
+  .addEventListener('change', () => {
+    if (
+      document.querySelector('#selectGPSorPostalCode').value == '--Select--'
+    ) {
+      document.querySelector('#postalcodepopup').innerHTML = '';
+    } else if (
+      document.querySelector('#selectGPSorPostalCode').value == 'gps'
+    ) {
+      getGpsLocation();
+      document.querySelector('#postalcodepopup').innerHTML = '';
+    } else {
+      let html = `
+        <div class="d-flex px-3 w-100 my-0">
+          <input class="form-control-sm" type="text" placeholder="Enter postal code" id="search-postalcodeinput" size="" /><button id="search-postalcodebtn" class="btn btn-info btn-sm mx-2">Submit</button>
+        </div>
+      `;
+      document.querySelector('#postalcodepopup').innerHTML = html;
+      document
+        .querySelector('#search-postalcodebtn')
+        .addEventListener('click', async () => {
+          let response = await axios.get(
+            'https://developers.onemap.sg/commonapi/search',
+            {
+              params: {
+                searchVal: document.querySelector('#search-postalcodeinput')
+                  .value,
+                returnGeom: 'Y',
+                getAddrDetails: 'Y',
+                pageNum: '1',
+              },
+            }
+          );
+          let postalCodeResults = response.data.results[0];
+          searchPostalCode = [
+            parseFloat(postalCodeResults.LATITUDE),
+            parseFloat(postalCodeResults.LONGITUDE),
+          ];
+
+          L.marker(searchPostalCode, {
+            icon: youAreHereIcon,
+          })
+            .bindPopup('Your Postal Code Location')
+            .addTo(map);
+
+          map.setView(searchPostalCode, 12);
+        });
+    }
+  });

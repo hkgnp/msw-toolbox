@@ -22,8 +22,8 @@ document.querySelector('#new-referral').addEventListener('click', () => {
 let count = 6;
 const loadingTimer = () => {
   count = count - 1;
-  document.getElementById(
-    'timer'
+  document.querySelector(
+    '#timer'
   ).innerHTML = `Please wait: ${count}s to get your location`;
 };
 
