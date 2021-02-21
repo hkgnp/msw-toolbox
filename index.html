@@ -68,7 +68,7 @@
       gtag('config', 'G-RXWHXPZVM2');
     </script>
     <title>msw | tool.box</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
 
   <body>
@@ -250,25 +250,50 @@
     </section>
 
     <!--Search Results-->
-    <section id="search-results" class="row p-3">
+    <section id="search-results" class="row px-3">
       <div class="col">
-        <button id="whereami" class="btn btn-info btn-sm mb-2">
-          <i class="fas fa-location-arrow"></i>
-        </button>
-        Toggle:
-        <button id="sso-btn" class="btn btn-info btn-sm mb-2">SSO</button>
-        <button id="disability-btn" class="btn btn-info btn-sm mb-2">
-          Disability
-        </button>
-        <button id="fsc-btn" class="btn btn-info btn-sm mb-2">FSC</button>
+        <!--Toggle buttons row-->
+        <div class="row mb-0">
+          <div class="col mb-0">
+            <div class="form-group">
+              <select class="form-control-sm" id="selectGPSorPostalCode">
+                <option>--Select--</option>
+                <option value="gps" id="gps">GPS</option>
+                <option value="postalcode" id="postalcode">Postal Code</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-7 mb-0">
+            <button id="sso-btn" class="btn btn-info btn-sm mb-2">SSO</button>
+            <button id="disability-btn" class="btn btn-info btn-sm mb-2">
+              Disability
+            </button>
+            <button id="fsc-btn" class="btn btn-info btn-sm mb-2">FSC</button>
+          </div>
+        </div>
 
-        <div id="mapid"></div>
-        <div class="mt-2">
-          <button id="new-referral" class="btn btn-danger btn-sm">
-            New Referral
-          </button>
+        <!--Postal code popup-->
+        <div class="row mb-2">
+          <span id="postalcodepopup"></span>
+        </div>
+
+        <!--Map row-->
+        <div class="row">
+          <div class="col">
+            <div id="mapid"></div>
+          </div>
+        </div>
+
+        <!--New referral button-->
+        <div class="row mt-2">
+          <div class="col">
+            <button id="new-referral" class="btn btn-danger btn-sm">
+              New Referral
+            </button>
+          </div>
         </div>
       </div>
+      <!--Col-->
     </section>
 
     <!--Referral Modal-->
@@ -487,34 +512,53 @@
       <div class="row p-3">
         <div class="col">
           <h3>Tech Credits</h3>
-          <p>
-            <ul>
-              <li><a href="https://www.github.com/">Github</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/CSS">CSS</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/JavaScript">Vanilla Javascript</a></li>
-              <li><a href="https://leafletjs.com/">Leaflet</a></li>
-              <li><a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet Geometry Utility</a></li>
-              <li><a href="https://github.com/mapbox/leaflet-omnivore">Leaflet Omnivore</a></li>
-              <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
-              <li><a href="https://fonts.google.com/">Google Fonts</a></li>
-              <li><a href="https://fontawesome.com/">Font Awesome</a></li>
-              <li><a href="https://www.mongodb.com/cloud/atlas">MongoDB</a></li>
-              <li><a href="https://www.heroku.com">Heroku</a></li>
-              <li><a href="https://github.com/axios/axios">Axios</a></li>
-              <li><a href="https://apexcharts.com/">ApexCharts.JS</a></li>
-              <li><a href="https://codepen.io/erikterwan/pen/EVzeRP">CSS Menu</a></li>
-              <li><a href="https://scrollrevealjs.org/api/reveal.html">Scroll Reveal</a></li>
-              <li><a href="https://www.flaticon.com">Flat Icons (for the pins)</a><ul>
-              <li><a href="https://www.freepik.com">Freepik</a></li>
-              <li><a href="https://smashicons.com">Smashicons</a></li>
-              <li><a href="https://icon54.com">Pixel Perfect</a></li>
-              <li><a href="https://www.flaticon.com">srip</a></li>
-              </ul>
-              </li>
-              <li>Built with <a href="https://code.visualstudio.com/">VS Code</a></li>
-              </ul>
-          </p>
+          <ul>
+            <li><a href="https://www.github.com/">Github</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/CSS">CSS</a></li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/JavaScript"
+                >Vanilla Javascript</a
+              >
+            </li>
+            <li><a href="https://leafletjs.com/">Leaflet</a></li>
+            <li>
+              <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil"
+                >Leaflet Geometry Utility</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/mapbox/leaflet-omnivore"
+                >Leaflet Omnivore</a
+              >
+            </li>
+            <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+            <li><a href="https://fonts.google.com/">Google Fonts</a></li>
+            <li><a href="https://fontawesome.com/">Font Awesome</a></li>
+            <li><a href="https://www.mongodb.com/cloud/atlas">MongoDB</a></li>
+            <li><a href="https://www.heroku.com">Heroku</a></li>
+            <li><a href="https://github.com/axios/axios">Axios</a></li>
+            <li><a href="https://apexcharts.com/">ApexCharts.JS</a></li>
+            <li>
+              <a href="https://codepen.io/erikterwan/pen/EVzeRP">CSS Menu</a>
+            </li>
+            <li>
+              <a href="https://scrollrevealjs.org/api/reveal.html"
+                >Scroll Reveal</a
+              >
+            </li>
+            <li>
+              <a href="https://www.flaticon.com">Flat Icons (for the pins)</a>
+            </li>
+            <li></li>
+            <li><a href="https://www.freepik.com">Freepik</a></li>
+            <li><a href="https://smashicons.com">Smashicons</a></li>
+            <li><a href="https://icon54.com">Pixel Perfect</a></li>
+            <li><a href="https://www.flaticon.com">srip</a></li>
+            <li>
+              Built with <a href="https://code.visualstudio.com/">VS Code</a>
+            </li>
+          </ul>
           <p><a href="#top" alt="Back to Top">Back to top</a></p>
         </div>
       </div>
