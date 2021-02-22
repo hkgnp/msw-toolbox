@@ -52,36 +52,52 @@ document.querySelector('#refer-btn').addEventListener('click', async () => {
   let patientContact = document.querySelector('#patientContact').value;
   let patientSR = document.querySelector('#patientSR').value;
 
-  // Define payload
-  let payLoad = {
-    referTo: referTo,
-    referrerName: referrerName,
-    referrerOrg: referrerOrg,
-    referrerEmail: referrerEmail,
-    patientName: patientName,
-    patientIdent: patientIdent,
-    patientContact: patientContact,
-    patientSR: patientSR,
-  };
+  // Check for blank fields
+  if (
+    !referTo ||
+    !referrerName ||
+    !referrerOrg ||
+    !referrerEmail ||
+    !patientName ||
+    !patientIdent ||
+    !patientContact ||
+    !patientSR
+  ) {
+    document.querySelector(
+      '#refer-success'
+    ).innerHTML = `Please ensure all fields are completed.`;
+  } else {
+    document.querySelector('#refer-success').innerHTML = `Please wait...`;
+    // Define payload
+    let payLoad = {
+      referTo: referTo,
+      referrerName: referrerName,
+      referrerOrg: referrerOrg,
+      referrerEmail: referrerEmail,
+      patientName: patientName,
+      patientIdent: patientIdent,
+      patientContact: patientContact,
+      patientSR: patientSR,
+    };
 
-  // Push form values to array for localStorage
-  referral.push(payLoad);
+    // Push form values to array for localStorage
+    referral.push(payLoad);
 
-  // Send to MongoDB
-  await axios.post(
-    'https://polar-retreat-01092.herokuapp.com/referrals',
-    payLoad
-  );
+    // Send to MongoDB
+    await axios.post(
+      'https://polar-retreat-01092.herokuapp.com/referrals',
+      payLoad
+    );
 
-  // Store referral details in local storage
-  storeReferrals(patientReferral, referral);
+    // Store referral details in local storage
+    storeReferrals(patientReferral, referral);
 
-  document.querySelector(
-    '#refer-success'
-  ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
-  retrieveReferrals(patientReferral);
+    document.querySelector(
+      '#refer-success'
+    ).innerHTML = `Your referral has been successfully sent. You may close this popup.`;
+    retrieveReferrals(patientReferral);
 
-  document.querySelector('#referral-summary').innerHTML += `
+    document.querySelector('#referral-summary').innerHTML += `
       <p>
       <h4><span class="badge bg-success mr-3 text-light">SUCCESS</span></h4>
       <h2>Referred To:</h2>
@@ -106,6 +122,7 @@ document.querySelector('#refer-btn').addEventListener('click', async () => {
       <p>Social Report: <u>${referral[0].patientSR}</u></div>
       </p>
       `;
+  }
 });
 
 document.querySelector('#close-btn').addEventListener('click', () => {

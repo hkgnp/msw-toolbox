@@ -339,6 +339,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Enter your name"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -348,6 +349,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Enter your organisation"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -357,6 +359,7 @@
                   type="email"
                   class="form-control"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
               <!--Patient Details-->
@@ -368,6 +371,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Enter patient's name"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -377,6 +381,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Please key in last 4 characters of patient's identity number"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -386,6 +391,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Please key in patient's contact number"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -400,6 +406,7 @@
             </form>
           </div>
           <div class="modal-footer">
+            <span id="refer-success" class="text-success"></span>
             <button
               type="button"
               class="btn btn-secondary"
@@ -409,8 +416,8 @@
               Close
             </button>
             <button type="button" class="btn btn-primary" id="refer-btn">
-              Refer</button
-            ><span id="refer-success" class="text-success"></span>
+              Refer
+            </button>
           </div>
           <div id="referral-summary" class="px-3 m-3 border"></div>
         </div>

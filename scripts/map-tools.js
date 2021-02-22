@@ -185,6 +185,7 @@ let resultsFromPostalCode = () => {
 document.querySelector('#submit-search').addEventListener('click', () => {
   if (
     document.querySelector('#postalcode').value.length < 6 ||
+    document.querySelector('#postalcode').value.length > 6 ||
     !Number.isInteger(parseInt(document.querySelector('#postalcode').value))
   ) {
     document.querySelector('#timer').innerHTML =
