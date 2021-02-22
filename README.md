@@ -141,8 +141,9 @@ And it is also made only possible thanks to the painstaking work done by the fol
 # Acknowledgments
 
 - Mr Paul Chor
-- Mr Ace Liang
 - Mr Alexander Yan
+- Mr Shun
+- Mr Ace Liang
 - My wonderful classmates who have been part of this journey together:
   - Hidayah
   - Howard
