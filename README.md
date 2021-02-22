@@ -150,6 +150,7 @@ And it is also made only possible thanks to the painstaking work done by the fol
   - Julius
   - Ryan
   - Ying Ru
+- My fellow professionals who have given feedback to help me finetune the application.
 
 # Testing
 
