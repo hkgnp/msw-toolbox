@@ -35,12 +35,8 @@ h4 {
   color: rgb(255, 255, 255);
 }
 #services {
-  height: 100vh;
+  height: 60vh;
   overflow: hidden;
-}
-
-#location h3 {
-  color: rgb(239, 71, 111);
 }
 
 .form-check input[type='radio'] {
@@ -88,6 +84,22 @@ h4 {
   height: 100vh;
   display: flex;
   align-items: center;
+  background-image: url('/img/map.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.location-text {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  z-index: 2;
+  width: 80% !important;
+  padding: 20px;
+  text-align: center;
 }
 
 #search-results {
@@ -106,25 +118,25 @@ h4 {
 }
 
 #infograph {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
 }
 
 #aboutthisapp {
-  height: 100vh;
+  height: 60vh;
   display: flex;
   align-items: center;
 }
 
 #techcredits {
-  height: 100vh;
+  height: 60vh;
   display: flex;
   align-items: center;
 }
 
 #contact {
-  height: 100vh;
+  height: 60vh;
   display: flex;
   align-items: center;
 }
