@@ -123,19 +123,7 @@ h4 {
   align-items: center;
 }
 
-#aboutthisapp {
-  height: 60vh;
-  display: flex;
-  align-items: center;
-}
-
-#techcredits {
-  height: 60vh;
-  display: flex;
-  align-items: center;
-}
-
-#contact {
+.about {
   height: 60vh;
   display: flex;
   align-items: center;
