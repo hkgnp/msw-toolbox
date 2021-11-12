@@ -84,7 +84,10 @@ document.querySelector('#refer-btn').addEventListener('click', async () => {
     referral.push(payLoad);
 
     // Send to MongoDB
-    await axios.post('https://msw-toolbox.herokuapp.com/referrals', payLoad);
+    await axios.post(
+      'https://msw-toolbox-api.herokuapp.com/referrals',
+      payLoad
+    );
 
     // Store referral details in local storage
     storeReferrals(patientReferral, referral);

@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', async () => {
-  let response = await axios.get('https://msw-toolbox.herokuapp.com/referrals');
+  let response = await axios.get(
+    'https://msw-toolbox-api.herokuapp.com/referrals'
+  );
   let referralHistoryDiv = document.querySelector('#referralhistory');
   for (let p of response.data) {
     let pElement = document.createElement('p');
@@ -37,7 +39,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       .querySelector('#processbtn')
       .addEventListener('click', async () => {
         await axios.delete(
-          `https://msw-toolbox.herokuapp.com/referrals/${p._id}`
+          `https://msw-toolbox-api.herokuapp.com/referrals/${p._id}`
         );
         location.reload();
       });
